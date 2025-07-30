@@ -1,0 +1,16 @@
+.section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+.section label {
+  display: block;
+  margin-top: 10px;
+  font-weight: 500;
+}
+.section input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 4px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}

@@ -1,0 +1,49 @@
+.institution-landing {
+  background: #e1f3fc; /* sky-blue from PDF */
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px 15px; /* reduced top/bottom padding */
+  margin-top: -10vh;
+  margin-bottom: -10vh;
+}
+
+.landing-box {
+  background: white;
+  padding: 35px 25px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  max-width: 550px;
+  width: 100%;
+}
+
+.landing-box h1 {
+  font-size: 26px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.landing-box p {
+  font-size: 15px;
+  color: #444;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.register-btn {
+  background-color: #630000;
+  color: #fff;
+  border: none;
+  padding: 12px 26px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #630000;
+}

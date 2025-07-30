@@ -1,0 +1,99 @@
+.sigin-page-container-div {
+  width: 100%;
+  height: 400px;
+  background-color: aqua;
+}
+.inner-signin-page-container-div {
+  max-width: 1920px;
+  height: 100%;
+  background-color: aquamarine;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.width-page {
+  width: 80%;
+}
+.input-sigin-container {
+  width: 100%;
+  height: 300px;
+  /* background-color: blanchedalmond; */
+  display: flex;
+}
+.input-s-container-left {
+  width: 50%;
+  height: 100%;
+  /* background-color: cadetblue; */
+}
+.input-s-container-right {
+  width: 50%;
+  height: 100%;
+  background-color: blue;
+}
+.course-input-page-container {
+  width: 100%;
+  min-height: 100px;
+  /* background-color: #ad1212; */
+}
+.course-input-page-container input {
+  position: absolute;
+  width: 400px;
+  height: 60px;
+  outline: none;
+  padding: 0 30px;
+  line-height: 80px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  transition: 0.1s ease;
+  z-index: 1111;
+  color: #fff;
+}
+
+.label-container-1 {
+  position: absolute;
+  color: #fff;
+  height: 60px;
+  padding: 0px 15px;
+  margin: 0 20px;
+  background-color: #630000;
+  transition: 0.2s ease;
+  line-height: 30px;
+  display: flex;
+  align-items: center;
+}
+/* input:focus,
+input:valid {
+  border: 2px solid #ad1212;
+} */
+input:focus + .label-container-1,
+input:valid .label-container-1 {
+  height: 30px;
+  color: #fff;
+  line-height: 30px;
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 99999;
+}
+input:valid + .fix-3 {
+  height: 30px;
+  color: #fff;
+  line-height: 30px;
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 99999;
+}
+
+.course-input-page-container i {
+  position: absolute;
+  font-size: 30px;
+  left: 540px;
+  top: 170px;
+}
+
+.d-r-p-show {
+  width: 460px;
+  height: auto;
+  position: absolute;
+  top: 230px;
+  left: 130px;
+  /* display: none; */
+}

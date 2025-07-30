@@ -1,0 +1,21 @@
+.preview-container {
+  padding: 20px;
+  background-color: #fefefe;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  margin-top: 20px;
+}
+
+.preview-container h2 {
+  margin-bottom: 15px;
+  color: #2e6ba2;
+}
+
+.preview-section {
+  margin-top: 20px;
+}
+
+.preview-section h3 {
+  font-size: 16px;
+  margin-bottom: 5px;
+}

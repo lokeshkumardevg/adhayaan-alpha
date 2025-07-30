@@ -1,0 +1,80 @@
+.career-opportunities-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.career-opportunities-container-one {
+    background-color: #f7e5e5;
+}
+
+.career-opportunities-container h1,
+.career-opportunities-container h2,
+.career-opportunities-container h3 {
+    color: #630000;
+}
+
+.career-opportunities-container h2 ,
+.career-opportunities-container h3  {
+    margin-right: 10px;
+}
+
+.career-opportunities-container p {
+    margin-bottom: 1em;
+    color: #630000;
+}
+
+.career-opportunities-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.career-opportunities-container a:hover {
+    text-decoration: underline;
+}
+
+.career-opportunities-container ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+
+.career-opportunities-container ol {
+    list-style-type: decimal;
+    margin-left: 20px;
+}
+
+.carrers-icons-1 {
+    display: flex;
+    background-color: #007bff;
+}
+
+.Carrer-list li {
+    color: #630000;
+}
+
+@media (max-width: 600px) {
+    .career-opportunities-container {
+        padding: 10px;
+    }
+
+    .career-opportunities-container h1 {
+        font-size: 1.5em;
+    }
+
+    .career-opportunities-container h2 {
+        font-size: 1.25em;
+    }
+
+    .career-opportunities-container h3 {
+        font-size: 1.1em;
+    }
+
+    .career-opportunities-container p,
+    .career-opportunities-container ul,
+    .career-opportunities-container ol {
+        font-size: 1em;
+    }
+}
+

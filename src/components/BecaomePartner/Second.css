@@ -1,0 +1,175 @@
+.box {
+  display: flex;
+  padding-top: 60px;
+  padding-left: 130px;
+  padding-bottom: 30px;
+}
+
+.left-box {
+  width: 115%;
+  height: 280px; /* Adjust width as needed */
+  background-color: #f7e5e5;
+  /* Color of the left box */
+  border-radius: 10px;
+
+  position: relative; /* Setting the left-box to relative position */
+}
+
+.left-box:hover {
+  box-shadow: -1px -1px 10px 10px rgba(215, 4, 169, 0.364);
+}
+
+.right-content {
+  width: 50%; /* Adjust width as needed */
+  float: left; /* Aligning it to the left */
+}
+
+.circle {
+  /* Adjust size as needed */
+  background-color: #6c0000; /* Color of the circle */
+  /* Making it a circle */
+  border-radius: 50px;
+  position: absolute;
+  left: 28px;
+  bottom: 20px;
+}
+
+.circle:hover {
+  width: 90px;
+  border-radius: 15px;
+  border-top-left-radius: 25px; /* Remove border radius for top left corner */
+  border-bottom-left-radius: 25px; /* Remove border radius for bottom left corner */
+  border-top-right-radius: 25px; /* Set border radius for top right corner */
+  border-bottom-right-radius: 25px; /* Set border radius for bottom right corner */
+  box-shadow: -1px -1px 10px 10px rgba(215, 4, 169, 0.364);
+}
+
+.circle {
+  /* Circle styles */
+  width: 50px;
+  height: 50px;
+
+  /* Other styles */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: width 0.4s ease;
+}
+
+.circle:hover {
+  width: 100px;
+}
+
+.circle .fa-play-circle {
+  display: none;
+}
+
+.circle h4 {
+  display: none;
+  animation: slideFromLeft 0.4s ease forwards; /* Apply animation */
+}
+@keyframes slideFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.circle.hover h4 {
+  display: inline;
+}
+.right-content h2 {
+  font-size: 38px;
+  color: #f7e5e5;
+}
+.right-content p {
+  color: #f7e5e5;
+}
+.right-content {
+  position: relative;
+  bottom: 28px;
+  padding-left: 225px;
+}
+.parent {
+  padding-top: 45px;
+  display: flex;
+}
+
+.left-div h2 {
+  font-size: 45px;
+  color: #6c0000;
+}
+
+.left-div h4 {
+  color: #6c0000;
+}
+
+.next-div {
+  padding-top: 30px;
+  padding-left: 230px;
+}
+
+.left-div {
+  padding-left: 90px;
+}
+
+.custom-accordion {
+  width: 480px;
+}
+
+.accordion-header {
+  display: flex;
+}
+
+.accordion-header h3 {
+  color: #6c0000;
+}
+@keyframes slideDown {
+  0% {
+    max-height: 0;
+  }
+  100% {
+    max-height: 500px; /* Adjust the maximum height as needed */
+    opacity: 1;
+  }
+}
+
+.accordion-body {
+  overflow: hidden;
+  animation: slideDown 2s ease; /* Adjust the duration (1s) and easing as needed */
+}
+
+.icons {
+  position: relative;
+  top: 20px;
+  left: 368px;
+}
+.accordion-header {
+  border-bottom: 2px solid #6c0000; /* Add your desired color here */
+
+  margin-bottom: 8px; /* Adjust as needed */
+
+  padding-left: 10px;
+  border-radius: 5px;
+}
+
+/* Add this if you want to remove the border from the last accordion header */
+.custom-accordion:last-child .accordion-header {
+  border-bottom: none;
+}
+
+.right-div {
+  margin-bottom: 90px;
+}
+
+.box {
+  background-color: #6c0000;
+}
+
+.parent {
+  background-color: #f7e5e5;
+}

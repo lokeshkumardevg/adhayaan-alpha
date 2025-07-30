@@ -1,0 +1,57 @@
+.register-page {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 50px 0;
+  background-color: #f7f7f7;
+}
+
+.register-box {
+  width: 450px;
+  padding: 30px;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.register-box h2 {
+  margin-bottom: 20px;
+  font-size: 24px;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.input-field {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.btn-wrapper {
+  margin-top: 10px;
+}
+
+.main-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.main-btn:hover {
+  background-color: #0056b3;
+}
+
+.error {
+  color: red;
+  font-size: 14px;
+}

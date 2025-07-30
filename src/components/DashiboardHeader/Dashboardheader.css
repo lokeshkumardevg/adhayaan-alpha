@@ -1,0 +1,93 @@
+.header-container-dash {
+  width: 100%;
+  height: 100px;
+  background-color: red;
+  z-index: 254235;
+  position: sticky;
+  top: 0px;
+  z-index: 287980692;
+}
+.inner-dash-header {
+  max-width: 1920px;
+  height: 100%;
+  background-color: #630000;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-evenly;
+}
+.dash-logo {
+  width: 30%;
+  height: 100%;
+  /* background-color: green; */
+  display: flex;
+  align-items: center;
+}
+.dash-logo img {
+  width: 80px;
+  height: 80px;
+}
+.dash-contanet-conatainer {
+  width: 30%;
+  height: 100%;
+  /* background-color: green; */
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.icon-conatiner-dash {
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -10px;
+}
+
+.dash-show {
+  width: 300px;
+  height: 400px;
+  z-index: 2341234124;
+  background-color: red;
+}
+.i-m-2 {
+  /* z-index: 2425423 !important; */
+  margin-left: 30px;
+  margin-top: 34px;
+}
+
+.ss-a {
+  display: none;
+}
+.courseName-3{
+  /* background-color: red; */
+  display: flex;
+  width: 90px;
+  align-items: center;
+  gap: 5px;
+  margin-top: -10px;
+}
+.courseName-3 i{
+  font-size: 10px;
+  margin-top: 4px;
+}
+@media (max-width: 600px) {
+  .ss-a {
+    display: block;
+    margin-top: 35px;
+    /* margin-left: 90px; */
+  }
+  .dash-contanet-conatainer {
+    display: flex;
+    margin-top: -0px;
+
+  }
+  .im-2 {
+    width: 200px;
+    margin-left: -105px;
+  }
+  .ss-a-1 {
+    display: none;
+  }
+}

@@ -1,0 +1,55 @@
+.career-container {
+    padding: 20px;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+   
+  }
+  
+  .career-container-one{
+    background-color: #f7e5e5;
+  }
+  .career-container h1,
+  .career-container h2,
+  .career-container h3 {
+    color: #630000;
+  }
+  
+  .career-container p {
+    margin-bottom: 1em;
+    color: #630000;
+  }
+  
+  .career-container a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .career-container a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 600px) {
+    .career-container {
+      padding: 10px;
+    }
+  
+    .career-container h1 {
+      font-size: 1.5em;
+    }
+  
+    .career-container h2 {
+      font-size: 1.25em;
+    }
+  
+    .career-container h3 {
+      font-size: 1.1em;
+    }
+  
+    .career-container p {
+      font-size: 1em;
+    }
+  }
+  

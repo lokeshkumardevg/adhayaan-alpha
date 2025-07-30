@@ -1,0 +1,46 @@
+.grievance-container {
+  width: 100%;
+  min-height: 800px;
+  background-color: red;
+}
+.inner-grievance {
+  max-width: 1920px;
+  height: 100%;
+  background-color: #f7e5e5;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+
+.w-grievance{
+    width: 80%;
+    height: 100%;
+    padding: 20px;
+    /* background-color: yellow; */
+}
+.grievance{
+  width: 100%;
+  height: 10%;
+  /* background-color: red; */
+  display: flex;
+  /* align-items: center;justify-content: center; */
+}
+.grievance textarea{
+  width: 860px;
+  height: 200px;
+  border-radius: 10px;
+  resize: none;
+  padding: 20px;
+  /* margin-left: -100px; */
+  background: none;
+  border: 2px solid #630000;
+  color: #630000;
+}
+.grievance button{
+  width: 130px;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  background-color: #630000;
+  color: #f7e5e5;
+}

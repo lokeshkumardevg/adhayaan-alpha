@@ -1,0 +1,23 @@
+.section h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.accolade-input {
+  width: 100%;
+  padding: 8px;
+  margin: 5px 0;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.add-btn {
+  margin-top: 10px;
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #3d84f5;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}

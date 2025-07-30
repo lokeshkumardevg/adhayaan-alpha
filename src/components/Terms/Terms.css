@@ -1,0 +1,27 @@
+.parentterms{
+    width: 100%;
+}
+
+.termsandcondition{
+    background-color: #f7e5e5;
+    color: #630000;
+    max-width: 1920px;
+    height: 100%;
+    margin: 0 auto;
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.termsandcondition li{
+    list-style: none;
+    /* display: flex; */
+    /* margin-left: -20px; */
+    display: flex;
+    gap: 10px;
+}
+.termsandcondition li i{
+    margin-left: -15px;
+    margin-top: 7px;
+    font-size:12px;
+}

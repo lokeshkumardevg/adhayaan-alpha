@@ -1,0 +1,28 @@
+.privacy-1 {
+  width: 100%;
+  height: 100%;
+  background-color: #f7e5e5;
+}
+.privacy-2 {
+  max-width: 1920px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.privacy-content-one {
+  width: 80%;
+  color: #630000;
+}
+.privacy-content-one p {
+  text-align: justify;
+}
+.cl-1 li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.custom-list .cl-2{
+  margin-left: -40px;
+}

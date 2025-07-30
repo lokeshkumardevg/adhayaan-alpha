@@ -1,0 +1,19 @@
+.thank-you-container {
+  width: 100%;
+  height: 400px;
+  background-color: red;
+}
+.inner-thank-u-container {
+  max-width: 1920px;
+  height: 100%;
+  background-color: #f7e5e5;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30px;color: #630000;
+}
+
+.width {
+  width: 80%;
+}

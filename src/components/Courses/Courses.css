@@ -1,0 +1,91 @@
+.course-div-parents {
+  display: flex;
+  flex-wrap: wrap;
+
+  background-color: #630000;
+  padding-top: 40px;
+  padding-bottom: 40px;
+  justify-content: center;
+}
+
+.course-div-footer {
+  background-color: #f7e5e5;
+  padding: 20px;
+  border-radius: 10px;
+}
+.course-div-footer h1 {
+  color: #630000;
+}
+
+.footer-course-headings {
+  height: 42px;
+  border-bottom: 2px solid #630000; /* Adds a red bottom border */
+}
+
+.course-div-footer h3 {
+  color: #630000;
+}
+
+.links {
+  text-decoration: none;
+  color: #f7e5e5;
+}
+
+.links:hover {
+  color: #ccc;
+}
+
+@media (max-width: 666px) {
+  .footer-div-c-name {
+    font-size: 14px;
+  }
+}
+@media (max-width: 596px) {
+  .footer-div-c-name {
+    font-size: 12px;
+  }
+}
+@media (max-width: 528px) {
+  .footer-div-c-name {
+    width: 300px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 488px) {
+  .footer-div-c-name {
+    width: 280px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 464px) {
+  .footer-div-c-name {
+    width: 240px;
+    font-size: 12px;
+  }
+}
+@media (max-width: 428px) {
+  .footer-div-c-name {
+    /* width: 250px; */
+    font-size: 12px;
+  }
+}
+@media (max-width: 402px) {
+  .footer-div-c-name {
+    width: 200px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 378px) {
+  .footer-div-c-name {
+    width: 280px;
+    font-size: 12px;
+    
+  }
+  .icon-div-c-nm {
+    width: 30px;
+  }
+  .icon-div-c-nm i {
+    margin-left: 30px;
+  }
+}

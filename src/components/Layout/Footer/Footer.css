@@ -1,0 +1,254 @@
+.footer-container {
+  width: 100%;
+  min-height: 500px;
+  background-color: black;
+}
+.inner-footer-container {
+  max-width: 1920px;
+  height: 100%;
+  /* background-color: aqua; */
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.one-footer-div {
+  margin-top: 90px;
+  width: 25%;
+  height: 90%;
+  /* background-color: #fff; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+}
+.container-div {
+  padding:10px;
+}
+.two-footer-div {
+  margin-top: 50px;
+  width: 65%;
+  height: 90%;
+  /* background-color: rgb(255, 247, 0); */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+.img-div {
+  display: flex;
+  margin-left: 25px;
+  margin-top: -90px;
+}
+
+.container-div{
+  width: 80%;
+  height: 50%;
+  margin-top: -20px;
+  /* background-color: brown; */
+}
+.container-div p {
+  text-align: justify;
+}
+.ft-btn {
+  padding: 10px 40px;
+  border-radius: 2px;
+  border: none;
+  background-color: #630000;
+  color: #fff;
+  letter-spacing: 1px;
+}
+.btn-container span {
+  font-weight: 600;
+}
+.btn-container p {
+  font-size: 25px;
+  color: #fff;
+}
+
+.one-ft-div {
+  width: 23%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+
+  /* background-color: aqua; */
+}
+.heading-ft-div {
+  width: 100%;
+  height: 10%;
+  /* background-color: #630000; */
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  font-size: 20px;
+  color: #fff;
+  margin-top: 5px;
+}
+.nav-div {
+  width: 100%;
+  height: 70%;
+  /* background-color: #1f6300; */
+  /* margin-top: -40px; */
+}
+.nav-div ul {
+  /* display: flex;
+  flex-direction: column;
+  gap: 10px; */
+}
+.nav-div ul li {
+  list-style: none;
+  margin-top: 10px;
+  margin-left: -38px;
+  color: #6e6e6e;
+  cursor: pointer;
+}
+.lin-div {
+  margin-top: -16px;
+  width: 30px;
+  height: 2px;
+  background-color: #630000;
+}
+.lin-div-1 {
+  margin-top: -16px;
+  width: 80px;
+  height: 2px;
+  background-color: #4b4545;
+}
+.div-s {
+  display: flex;
+}
+.two-ft-div {
+  width: 23%;
+  height: 80%;
+  /* background-color: aqua; */
+}
+.three-ft-div {
+  width: 23%;
+  height: 80%;
+  /* background-color: aqua; */
+}
+.four-ft-div {
+  width: 20%;
+  height: 80%;
+}
+.heading-ft-div p {
+  margin-top: -6px;
+}
+.p {
+  font-size: 21px;
+  font-weight: 700;
+  color: #fff;
+}
+
+.two-ft-div p {
+  margin-top: 35.2px;
+}
+
+.three-ft-div p {
+  margin-top: 35.2px;
+}
+
+.four-ft-div p {
+  margin-top: 35.2px;
+}
+
+.bt-footer {
+  width: 100%;
+  height: 200px;
+  background-color: #000;
+  color: #fff;
+}
+.inner-bt-ft {
+  max-width: 1920px;
+  height: 100%;
+  /* background-color: #6e6e6e; */
+  margin: -50px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.bt-ft-div {
+  width: 85%;
+  height: 50%;
+  border-top: 1px solid #282828;
+  /* background-color: #630000; */
+}
+.bt-1 {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.bt-icons {
+  /* background-color: #000; */
+  display: flex;
+  gap: 10px;
+  font-size: 25px;
+}
+.para {
+  /* width: 300px; */
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+.bt-2 {
+  display: flex;
+  justify-content: space-between;
+}
+.fa-whatsapp {
+  font-size: 25px;
+}
+
+@media (max-width: 848px) {
+  .inner-footer-container {
+    flex-direction: column;
+  }
+  .one-footer-div,
+  .two-footer-div {
+    width: 80%;
+  }
+  .img-div {
+    display: flex;
+    justify-content: center;
+  }
+  .heading-ft-div {
+    align-items: center;
+  }
+  .nav-div ul {
+    align-items: center;
+  }
+}
+@media (max-width: 650px) {
+  .two-footer-div {
+    align-items: center;
+    gap: 20px;
+    justify-content: center;
+    /* flex-direction: column; */
+  }
+  .one-ft-div,
+  .two-ft-div,
+  .three-ft-div,
+  .four-ft-div {
+    width: 40%;
+  }
+  .para {
+    font-size: 14px;
+  }
+  .bt-2 {
+    font-size: 10px;
+  }
+  .three-ft-div .heading-ft-div{
+    margin-top: -60px;
+  }
+}
+
+@media(max-width:390px){
+ .heading-ft-div .course{
+    margin-top: 45px;
+  }
+}

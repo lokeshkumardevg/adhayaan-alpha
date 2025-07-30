@@ -1,0 +1,66 @@
+import React, { useState } from "react";
+import AboutSection from "../profile-section/about-section/AboutSection";
+import TutorSection from "../profile-section/tutor-section/TutorSection";
+import UniversitySection from "../profile-section/university-section/UniversitySection";
+import ConsultantSection from "../profile-section/consultant-section/ConsultantSection";
+import CourseSection from "../profile-section/course-section/CourseSection";
+import SocialMediaSection from "../profile-section/social-media-section/SocialMediaSection";
+import PhotosSection from "../profile-section/photo-section/PhotosSection";
+import AccoladeSection from "../profile-section/accoladation-section/AccoladeSection";
+import ManagementSection from "../profile-section/management-section/ManagementSection";
+import ContactSection from "../profile-section/contact-section/ContactSection";
+import ProfilePreview from "../profile-section/profile-view-section/ProfilePreview";
+import "./Dashboard.css";
+
+ 
+const DashboardNew = ({ user = { type: "Tutor", name: "Amit Sharma" } }) => {
+   const [formData, setFormData] = useState({
+    about: "",
+    institutionName: "",
+    address: "",
+    city: "",
+    country: "",
+    mobile: "",
+    supportEmail: "",
+    facebook: "",
+    linkedin: "",
+    accolades: [],
+    headName: "",
+    alternateMobile: "",
+    courses: []
+  });
+  return (
+    <div className="dashboard-wrapper">
+      {/* Top Navbar */}
+      <div className="dashboard-navbar">
+        <div className="logo">🎓 Aadhyayan</div>
+        <div className="user-info">Welcome, {user.name} ({user.type})</div>
+      </div>
+
+      {/* Page Title */}
+      <div className="dashboard-title">
+        <h2>Complete Your Profile</h2>
+        <p>Your profile is currently incomplete. Please update your profile to receive better responses and connect with the right students.</p>
+      </div>
+
+      <div className="dashboard-sections">
+        <AboutSection formData={formData} setFormData={setFormData} />
+
+        {user.type === "Tutor" && <TutorSection formData={formData} setFormData={setFormData} />}
+        {user.type === "University" && <UniversitySection formData={formData} setFormData={setFormData} />}
+        {user.type === "Consultant" && <ConsultantSection formData={formData} setFormData={setFormData} />}
+
+        <CourseSection formData={formData} setFormData={setFormData} />
+        <SocialMediaSection formData={formData} setFormData={setFormData} />
+        <PhotosSection formData={formData} setFormData={setFormData} />
+        <AccoladeSection formData={formData} setFormData={setFormData} />
+        <ManagementSection formData={formData} setFormData={setFormData} />
+        <ContactSection formData={formData} setFormData={setFormData} />
+
+        <ProfilePreview profile={formData} />
+      </div>
+    </div>
+  );
+};
+
+export default DashboardNew;

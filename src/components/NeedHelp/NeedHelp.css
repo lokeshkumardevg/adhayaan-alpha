@@ -1,0 +1,197 @@
+.Apps {
+  font-family: Arial, sans-serif;
+  min-height: 540px;
+  padding: 30px 90px;
+}
+.Apps-one {
+  padding: 30px 90px;
+  min-height: 540px;
+  background-color: #630000;
+  color: #f7e5e5;
+  /* background-color: green; */
+  /* display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; */
+}
+fieldset {
+  margin-bottom: 20px;
+  width: 95%;
+  /* margin-left: 60px; */
+}
+
+legend {
+  font-weight: bold;
+}
+
+label {
+  display: block;
+  margin: 10px 0;
+}
+
+.parentneedhelp {
+  width: 100%;
+  background-color: #630000;
+  color: #f7e5e5;
+}
+
+.needhelp {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+/* Style the button */
+.needhelpbutton {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7e5e5;
+  color: #630000;
+  cursor: pointer;
+  position: relative;
+  top: 80px;
+}
+
+.needhelpbuttonphone {
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  background-color: #f7e5e5;
+  color: #630000;
+  cursor: pointer;
+  position: relative;
+  top: 80px;
+}
+
+.inner-first input {
+  position: absolute;
+  width: 250px;
+  height: 50px;
+  outline: none;
+  padding: 0 30px;
+  line-height: 80px;
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  transition: 0.1s ease;
+  z-index: 1111;
+  color: #fff;
+}
+.inner {
+  position: absolute;
+  color: #fff;
+  padding: 0px 15px;
+  margin: 0 20px;
+  background-color: #630000;
+  transition: 0.2s ease;
+}
+
+input:focus,
+input:valid {
+  /* border: 2px solid #fff; */
+}
+.wraper-fo-c-2 input {
+  border: 2px solid #f7e5e5;
+  color: #f7e5e5;
+}
+input:focus + .inner,
+input:valid .inner {
+  color: #fff;
+  line-height: 30px;
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 99999;
+}
+input:focus + .l-2,
+input:valid .l-2 {
+  color: #f7e5e5;
+  line-height: 30px;
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 99999;
+}
+
+@media (max-width: 556px) {
+  fieldset {
+    width: 400px;
+    margin-left: -30px;
+  }
+  .needhelp p {
+    margin-left: -30px;
+  }
+  .inner-first input {
+    margin-left: -30px;
+  }
+  .inner {
+    margin-left: -20px;
+  }
+  .needhelpbuttonphone {
+    margin-left: -30px;
+  }
+  .needhelpbutton {
+    margin-left: -30px;
+  }
+}
+
+@media (max-width: 508px) {
+  fieldset {
+    width: 350px;
+  }
+}
+@media (max-width: 458px) {
+  fieldset {
+    width: 350px;
+    margin-left: -60px;
+  }
+  .Apps h1 {
+    margin-left: -60px;
+    width: 380px;
+    /* background-color: red; */
+  }
+  .needhelp p {
+    margin-left: -60px;
+  }
+  .Apps-one {
+    min-height: 600px;
+  }
+  .Apps-one h1 {
+    margin-left: -60px;
+    width: 380px;
+    /* background-color: red; */
+  }
+  .inner-first input {
+    margin-left: -60px;
+  }
+  .inner {
+    margin-left: -50px;
+  }
+}
+
+@media (max-width: 428px) {
+  .Apps h1 {
+    font-size: 20px;
+    width: 250px;
+  }
+  .Apps-one h1 {
+    font-size: 20px;
+    width: 250px;
+  }
+  fieldset {
+    width: 300px;
+  }
+  legend {
+    font-size: 12px;
+  }
+  .needhelpbuttonphone {
+    margin-left: -60px;
+  }
+  .needhelpbutton {
+    margin-left: -60px;
+  }
+}
+
+@media (max-width: 380px) {
+  fieldset {
+    width: 280px;
+  }
+}

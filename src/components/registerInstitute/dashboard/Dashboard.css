@@ -1,0 +1,49 @@
+.dashboard-wrapper {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #f4f8fb;
+  padding-bottom: 50px;
+}
+
+.dashboard-navbar {
+  background-color: #3a6ea5;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.dashboard-title {
+  background-color: #fff;
+  margin: 30px auto;
+  max-width: 1000px;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px #ccc;
+  text-align: center;
+}
+
+.dashboard-title h2 {
+  color: #1a1a1a;
+  margin-bottom: 10px;
+}
+
+.dashboard-title p {
+  color: #555;
+  font-size: 14px;
+}
+
+.dashboard-sections {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}

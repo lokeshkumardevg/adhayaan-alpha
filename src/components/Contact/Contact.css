@@ -1,0 +1,766 @@
+.contact-child-1 {
+  text-align: center;
+  height: 180px;
+  width: 300px;
+  background-color: #f7e5e5;
+  color: #630000;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+.contact-child-1 h2{
+  /* margin-top: -0px; */
+}
+.contact-child-1 h4{
+  /* margin-top: -5px; */
+}
+.contact-child-2 {
+  text-align: center;
+  height: 180px;
+  width: 300px;
+  background-color: #630000;
+  color: #f7e5e5;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.contact-child-3 {
+  text-align: center;
+  height: 180px;
+  width: 300px;
+  background-color: #f7e5e5;
+  color: #630000;
+
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+}
+
+.contact-child-1:hover {
+  text-align: center;
+  /* height: 270px;
+  width: 300px; */
+  background-color: #630000;
+  color: #f7e5e5;
+  border: 3px solid #630000;
+  border-radius: 20px;
+  box-shadow: rgba(99, 0, 0, 0.4) 0px 5px, rgba(99, 0, 0, 0.3) 0px 10px,
+    rgba(99, 0, 0, 0.2) 0px 15px, rgba(99, 0, 0, 0.1) 0px 20px,
+    rgba(99, 0, 0, 0.05) 0px 25px;
+
+  /* You can adjust the thickness and color of the border here */
+
+  /* Styles for .fa-solid.fa-phone when .contact-child-1 is hovered */
+  .fa-solid.fa-phone {
+    font-size: 24px;
+    background-color: #f7e5e5;
+    color: #630000;
+    /* Background color for the icon */
+    padding: 14px;
+    /* Add padding to the icon */
+    border-radius: 50%;
+    /* Make the icon circular */
+    transition: transform 0.9s ease;
+    /* Add transition effect */
+  }
+}
+
+.contact-child-3:hover {
+  text-align: center;
+  /* height: 270px;
+  width: 300px; */
+  background-color: #630000;
+  color: #f7e5e5;
+  border: 3px solid #630000;
+  border-radius: 20px;
+  /* You can adjust the thickness and color of the border here */
+  box-shadow: rgba(99, 0, 0, 0.4) 0px 5px, rgba(99, 0, 0, 0.3) 0px 10px,
+    rgba(99, 0, 0, 0.2) 0px 15px, rgba(99, 0, 0, 0.1) 0px 20px,
+    rgba(99, 0, 0, 0.05) 0px 25px;
+
+  /* Styles for .fa-solid.fa-phone when .contact-child-1 is hovered */
+  .fa-solid.fa-location-dot {
+    font-size: 24px;
+    background-color: #f7e5e5;
+    color: #630000;
+    /* Background color for the icon */
+    padding: 14px;
+    /* Add padding to the icon */
+    border-radius: 50%;
+    /* Make the icon circular */
+    transition: transform 0.9s ease;
+    /* Add transition effect */
+  }
+}
+
+.contact-child-2:hover {
+  text-align: center;
+  /* height: 270px;
+  width: 300px; */
+  background-color: #f7e5e5;
+  color: #630000;
+  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px,
+    rgba(171, 105, 105, 0.3) 0px 10px, rgba(198, 93, 93, 0.2) 0px 15px,
+    rgba(194, 41, 41, 0.1) 0px 20px, rgba(151, 105, 105, 0.05) 0px 25px,
+    rgba(128, 96, 96, 0.15) 0px 5px 15px 0px;
+
+  /* You can adjust the thickness and color of the border here */
+
+  /* Styles for .fa-solid.fa-phone when .contact-child-1 is hovered */
+  .fa-regular.fa-envelope {
+    font-size: 24px;
+    background-color: #630000;
+    color: #f7e5e5;
+    /* Background color for the icon */
+    padding: 14px;
+    /* Add padding to the icon */
+    border-radius: 50%;
+    /* Make the icon circular */
+    transition: transform 0.9s ease;
+    /* Add transition effect */
+  }
+}
+
+.contact-one {
+  width: 100%;
+  min-height: 270px;
+}
+
+.contact {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7e5e5;
+  padding-top: 50px;
+  padding-bottom: 50px;
+  max-width: 1920px;
+  height: 100%;
+
+  margin: 0 auto;
+}
+
+.contact > div {
+  margin: 0 10px;
+  /* Add margin for spacing between icons */
+}
+
+.fa-solid.fa-phone {
+  font-size: 24px;
+
+  background-color: #630000;
+  color: #f7e5e5;
+  /* Background color for the icon */
+  padding: 14px;
+  /* Add padding to the icon */
+  border-radius: 50%;
+  /* Make the icon circular */
+  transition: transform 0.9s ease;
+  /* Add transition effect */
+}
+
+.contact-child-icon > i {
+  font-size: 24px;
+
+  background-color: #f7e5e5;
+  color: #630000;
+  /* Background color for the icon */
+  padding: 14px;
+  /* Add padding to the icon */
+  border-radius: 50%;
+  /* Make the icon circular */
+  transition: transform 0.9s ease;
+  /* Add transition effect */
+}
+
+.contact-3-h2-two > i {
+  font-size: 24px;
+
+  color: #630000;
+  /* Background color for the icon */
+  margin-left: 10px;
+  transition: transform 0.9s ease;
+  /* Add transition effect */
+}
+
+.fa-solid.fa-location-dot {
+  font-size: 24px;
+
+  background-color: #630000;
+  color: #f7e5e5;
+  /* Background color for the icon */
+  padding: 14px;
+  /* Add padding to the icon */
+  border-radius: 50%;
+  /* Make the icon circular */
+  transition: transform 0.9s ease;
+  /* Add transition effect */
+}
+
+.fa-solid.fa-phone:hover {
+  transform: scale(1.1) rotateY(180deg);
+  /* Scale up and flip the icon on hover */
+}
+
+.fa-regular.fa-envelope:hover {
+  transform: scale(1.1) rotateY(180deg);
+}
+
+.fa-solid.fa-envelope:hover {
+  transform: scale(1.1) rotateY(180deg);
+}
+
+.fa-solid.fa-location-dot:hover {
+  transform: scale(1.1) rotateY(180deg);
+}
+
+.contact-2 {
+  max-width: 1920px;
+  height: 100%;
+  background-color: #630000;
+  margin: 0 auto;
+  display: flex;
+}
+
+.contactimagecontainer {
+  padding-left: 50px;
+
+  width: 50%;
+}
+
+.contact-two {
+  width: 100%;
+  min-height: 340px;
+}
+
+.form-group {
+  margin-bottom: 22px;
+}
+
+/* label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #f7e5e5;
+  font-size: 20px;
+} */
+
+input[type="text1"],
+input[type="email1"],
+input[type="tel1"] {
+  width: 100%;
+  padding: 10px;
+  /* border: 1px solid #ccc; */
+  border-radius: 8px;
+  /* box-sizing: border-box; */
+}
+
+.submit-btn-ad {
+  width: 25%;
+  padding: 10px;
+  background-color: #f7e5e5;
+  color: #630000;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 12px;
+}
+.inner-c-containt {
+  width: 100%;
+  height: 180px;
+  /* background-color: yellowgreen; */
+  padding: 20px 0px;
+  display: flex;
+  /* gap: 300px; */
+}
+.contact-submit {
+  width: 30%;
+  padding:10px 10px;
+  background-color: none;
+  background: none;
+  border: 2px solid #f7e5e5;
+  color: #f7e5e5;
+  /* border: none; */
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  font-size: 25px;
+}
+.contact-submit:hover{
+  background-color: #f7e5e5;
+  color: #630000;
+}
+.submit-btn-ad button:hover {
+  background-color: #0056b3;
+}
+
+@media (max-width: 800px) {
+  .contact {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact > div {
+    margin-bottom: 20px;
+  }
+}
+
+@media (max-width: 800px) {
+  .contact-2 {
+    flex-direction: column;
+    height: 130%;
+  }
+
+  .container {
+    width: 90%;
+    padding-left: 80px;
+    padding-bottom: 40px;
+  }
+}
+
+@media (max-width: 800px) {
+  .two {
+    flex-direction: column;
+    max-height: 300px;
+  }
+}
+
+.contact-three {
+  width: 100%;
+}
+
+.contact-3 {
+  max-width: 1920px;
+  height: 100%;
+  background-color: #f7e5e5;
+  margin: 0 auto;
+}
+
+.contact-3-h1 {
+  display: flex;
+  align-items: center;
+  justify-content: centers;
+  min-height: 340px;
+  width: 50%;
+}
+
+.contact-3-iframe {
+  padding-bottom: 30px;
+}
+
+.contacticons {
+  display: flex;
+}
+
+.connecticon1 i {
+  font-size: 30px;
+}
+
+.connecticon1 {
+  padding: 16px;
+  margin-left: 4px;
+
+  border-style: solid;
+  border-color: #630000;
+}
+
+.connecticon1:hover {
+  background-color: #630000;
+
+  i {
+    color: #f7e5e5;
+  }
+}
+
+.contact-3-h2 {
+  padding-top: 12px;
+  display: flex;
+}
+
+.contact-3-h2 i {
+  position: relative;
+  top: 10px;
+}
+
+.contact-3-h2-one {
+  display: flex;
+}
+
+.contact-3-h2-one i {
+  position: relative;
+  top: 10px;
+}
+
+.contact-3-h2-two {
+  display: flex;
+}
+
+.contact-3-h2-two i {
+  position: relative;
+  top: 20px;
+  left: 5px;
+}
+
+.contact-3-h2-two h3 {
+  position: relative;
+  left: 20px;
+}
+
+@media (max-width: 848px) {
+  .contact-3-h1 {
+    flex-direction: column;
+  }
+
+  .contact-3-h1-chlid {
+    position: relative;
+    left: 40px;
+  }
+}
+
+@media (max-width: 848px) {
+  .contact-3 {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 848px) {
+  .wraper-fo-c-2 {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 400px) {
+  .contacticons {
+    max-width: 200px;
+  }
+}
+
+.contactinput {
+  position: absolute;
+  color: #fff;
+  padding: 0px 15px;
+  margin: 0 20px;
+  position: relative;
+  bottom: 10px;
+  height: 40px;
+  width: 150px;
+  line-height: 70px;
+  /* margin-top: 30px; */
+  background-color: #630000;
+  /* background-color: red; */
+  transition: 0.2s ease;
+}
+
+.contact-f input:focus + .contactinput,
+.contact-f input:valid .contactinput {
+  color: #fff;
+  line-height: 60px;
+  /* background-color: red; */
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 99999;
+}
+
+input:valid + .fix2 {
+  color: #fff;
+  line-height: 60px;
+  transform: translate(-15px, -16px) scale(0.88);
+  z-index: 99999;
+}
+
+.contact-f {
+  position: relative;
+  height: 80px;
+  line-height: 60px;
+}
+
+.contact-f input {
+  position: absolute;
+  width: 220px;
+  height: 60px;
+  outline: none;
+  padding: 0 30px;
+  /* line-height: 0px; */
+  border-radius: 10px;
+  border: 2px solid #fff;
+  background-color: transparent;
+  transition: 0.1s ease;
+  z-index: 1111;
+  color: #fff;
+}
+
+.Containerrow1 {
+  display: flex;
+  flex-direction: column;
+}
+
+/* .Containerrow2 {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  left: 150px;
+} */
+.Containerrow2 {
+  width: 100%;
+  /* height: 100px; */
+  /* background-color: red; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.contact-f textarea {
+  width: 240px;
+  height: 40px;
+  background: none;
+  border: none;
+  outline: none;
+  border: 2px solid #fff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  color: #fff;
+  scrollbar-width: thin;
+}
+.contact-f textarea::placeholder {
+  color: #fff;
+}
+.check-box-container {
+  width: 98%;
+  /* background-color: #0056b3; */
+  color: #fff;
+  text-align: justify;
+}
+.container {
+  display: flex;
+  width: 100%;
+
+  background-color: #630000;
+  padding-left: 70px;
+  padding-top: 110px;
+}
+
+.check-box {
+  width: 100%;
+  min-height: 250px;
+  background-color: #f7e5e5;
+}
+
+.check-box-inner-first {
+  margin-left: 100px;
+  padding-top: 80px;
+}
+
+.check-box-first {
+  max-width: 1920px;
+  height: 100%;
+  margin: 0 auto;
+}
+.contact-container-2 {
+  width: 100%;
+  min-height: 300px;
+  /* background-color: red; */
+}
+.inner-contact-container-2 {
+  max-width: 1920px;
+  height: 100%;
+  background-color: #630000;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.w-contact-conatiner-2 {
+  width: 80%;
+  height: 100%;
+  display: flex;
+}
+.contct-img {
+  width: 40%;
+  display: flex;
+  align-items: center;
+}
+.contct-img img {
+  width: 100%;
+}
+.cotct-containt {
+  width: 60%;
+  height: 100%;
+}
+
+.Containerrow2 .error-message {
+  color: #fff;
+}
+.Containerrow2 .em-3 {
+  margin-top: 10px;
+}
+.wraper-container-input {
+  display: flex;
+}
+
+@media (max-width: 1040px) {
+  .inner-c-containt {
+    width: 580px;
+  }
+}
+@media (max-width: 1018px) {
+  .contct-img {
+    width: 30%;
+  }
+
+  .cotct-containt {
+    width: 70%;
+  }
+}
+@media (max-width: 896px) {
+  .inner-c-containt {
+    width: 100%;
+    height: auto;
+    flex-direction: column;
+  }
+  .contct-img {
+    width: 50%;
+  }
+  .cotct-containt {
+    width: 50%;
+  }
+  .contact-submit {
+    width: 100px;
+  }
+  .check-box-container {
+    font-size: 10px;
+  }
+}
+
+@media (max-width: 752px) {
+  .w-contact-conatiner-2 {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .contct-img {
+    width: 100%;
+  }
+  .cotct-containt {
+    width: 100%;
+  }
+  .contact-f input {
+    width: 400px;
+  }
+  .contact-f textarea {
+    width: 420px;
+  }
+  .contact-f {
+    margin-left: 60px;
+  }
+  .check-box-container {
+    width: 80%;
+    margin-left: 60px;
+  }
+}
+
+@media (max-width: 684px) {
+  .contact-f {
+    margin-left: 30px;
+  }
+  .check-box-container {
+    width: 90%;
+    margin-left: 30px;
+  }
+}
+@media (max-width: 638px) {
+  .contact-f input {
+    width: 320px;
+  }
+  .contact-f textarea {
+    width: 340px;
+  }
+  .contact-f {
+    margin-left: 50px;
+  }
+  .check-box-container {
+    width: 75%;
+    margin-left: 50px;
+  }
+}
+@media (max-width: 568px) {
+  .contact-f input {
+    width: 300px;
+  }
+  .contact-f textarea {
+    width: 320px;
+  }
+  .contact-submit{
+    font-size: 20px;
+  }
+}
+@media (max-width: 538px) {
+  .contact-f input {
+    width: 270px;
+  }
+  .contact-f textarea {
+    width: 290px;
+  }
+}
+@media (max-width: 500px) {
+  .contact-f {
+    margin-left: 20px;
+  }
+  .check-box-container {
+    width: 85%;
+    margin-left: 20px;
+  }
+}
+@media (max-width: 470px) {
+  .contact-f input {
+    width: 250px;
+  }
+  .contact-f textarea {
+    width: 270px;
+  }
+  .contactinput {
+    width: 40px;
+  }
+}
+@media (max-width: 446px) {
+  .contact-f input {
+    width: 230px;
+  }
+  .contact-f textarea {
+    width: 250px;
+  }
+}
+@media (max-width: 420px) {
+  .contact-f input {
+    width: 210px;
+  }
+  .contact-f textarea {
+    width: 230px;
+  }
+}
+@media (max-width: 390px) {
+  .contact-f input {
+    width: 210px;
+  }
+  .contact-f textarea {
+    width: 230px;
+  }
+  .contact-f {
+    margin-left: 10px;
+  }
+  .check-box-container {
+    width: 90%;
+    margin-left: 10px;
+  }
+}
+@media (max-width: 374px) {
+  .contact-f input {
+    width: 190px;
+  }
+  .contact-f textarea {
+    width: 210px;
+  }
+  .contact-f {
+    margin-left: 10px;
+  }
+  .check-box-container {
+    width: 90%;
+    margin-left: 10px;
+  }
+}
