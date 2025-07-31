@@ -1,5 +1,5 @@
-/* src/profile-section/university-section/UniversitySection.css */
-.university-section {
+/* src/profile-section/college-section/CollegeSection.css */
+.college-section {
   padding: 20px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -11,7 +11,7 @@
   margin-bottom: 10px;
 }
 
-.university-section label {
+.college-section label {
   display: block;
   margin-top: 12px;
   font-weight: 600;

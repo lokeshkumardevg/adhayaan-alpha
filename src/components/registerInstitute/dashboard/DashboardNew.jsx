@@ -10,11 +10,12 @@ import AccoladeSection from "../profile-section/accoladation-section/AccoladeSec
 import ManagementSection from "../profile-section/management-section/ManagementSection";
 import ContactSection from "../profile-section/contact-section/ContactSection";
 import ProfilePreview from "../profile-section/profile-view-section/ProfilePreview";
+import ProfileHeaderCard from "../profile-section/dashboard-header/ProfileHeaderCard";
 import "./Dashboard.css";
 
- 
 const DashboardNew = ({ user = { type: "Tutor", name: "Amit Sharma" } }) => {
-   const [formData, setFormData] = useState({
+  const [coverImage, setCoverImage] = useState(null);
+  const [formData, setFormData] = useState({
     about: "",
     institutionName: "",
     address: "",
@@ -29,26 +30,38 @@ const DashboardNew = ({ user = { type: "Tutor", name: "Amit Sharma" } }) => {
     alternateMobile: "",
     courses: []
   });
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) setCoverImage(URL.createObjectURL(file));
+  };
+
   return (
     <div className="dashboard-wrapper">
       {/* Top Navbar */}
-      <div className="dashboard-navbar">
+      <div className="top-navbar">
         <div className="logo">🎓 Aadhyayan</div>
-        <div className="user-info">Welcome, {user.name} ({user.type})</div>
+        <div className="username">
+          Welcome, {user.name} ({user.type})
+        </div>
       </div>
 
-      {/* Page Title */}
-      <div className="dashboard-title">
-        <h2>Complete Your Profile</h2>
-        <p>Your profile is currently incomplete. Please update your profile to receive better responses and connect with the right students.</p>
-      </div>
+      {/* Cover Section */}
+     <ProfileHeaderCard user={{ ...user, username: "jnicsrofficial" }} />
 
+      {/* Profile Form Sections */}
       <div className="dashboard-sections">
         <AboutSection formData={formData} setFormData={setFormData} />
 
-        {user.type === "Tutor" && <TutorSection formData={formData} setFormData={setFormData} />}
-        {user.type === "University" && <UniversitySection formData={formData} setFormData={setFormData} />}
-        {user.type === "Consultant" && <ConsultantSection formData={formData} setFormData={setFormData} />}
+        {user.type === "Tutor" && (
+          <TutorSection formData={formData} setFormData={setFormData} />
+        )}
+        {user.type === "University" && (
+          <UniversitySection formData={formData} setFormData={setFormData} />
+        )}
+        {user.type === "Consultant" && (
+          <ConsultantSection formData={formData} setFormData={setFormData} />
+        )}
 
         <CourseSection formData={formData} setFormData={setFormData} />
         <SocialMediaSection formData={formData} setFormData={setFormData} />

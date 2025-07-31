@@ -1,5 +1,5 @@
-/* src/profile-section/university-section/UniversitySection.css */
-.university-section {
+/* src/profile-section/iti-section/ITISection.css */
+.iti-section {
   padding: 20px;
   background-color: #fff;
   border: 1px solid #ccc;
@@ -8,10 +8,10 @@
 .section-heading {
   font-size: 18px;
   font-weight: bold;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
-.university-section label {
+.iti-section label {
   display: block;
   margin-top: 12px;
   font-weight: 600;
@@ -20,23 +20,7 @@
 .radio-group {
   display: flex;
   gap: 30px;
-  margin-top: 4px;
-}
-
-.ownership-types {
-  margin-top: 5px;
-  font-size: 14px;
-  color: #222;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.ownership-type-item {
-  background-color: #f3f3f3;
-  padding: 4px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  margin-top: 6px;
 }
 
 .text-input {
@@ -45,6 +29,7 @@
   font-size: 14px;
   margin-top: 4px;
   border: 1px solid #aaa;
+  border-radius: 3px;
 }
 
 .form-buttons {
@@ -59,6 +44,7 @@
   color: white;
   border: none;
   cursor: pointer;
+  font-weight: bold;
 }
 
 .cancel-btn {
