@@ -320,7 +320,7 @@ const Header = () => {
                     className="btn hide-btn"
                     onClick={() => navigate("/dashboardnew")}
                   >
-                    register Institute
+                    Register Institute
                   </button>
                 </div>
                 <div className="btn-div">
@@ -517,7 +517,7 @@ const Header = () => {
                       </p>
                     </Link>
                     <Link
-                      to={"/registerInstitute"}
+                      to={"/login-institute"}
                       style={{ textDecoration: "none", color: "#6e6e6e" }}
                       className="hide-link"
                     >

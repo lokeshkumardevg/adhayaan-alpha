@@ -1,38 +1,62 @@
 import React from "react";
 import "./SocialMediaSection.css";
 
-const SocialMediaSection = ({ formData, setFormData }) => {
+const SocialMediaSection = () => {
   return (
-    <div className="section">
-      <h3>Social Media Links</h3>
-      <label>Facebook</label>
-      <input
-        type="url"
-        name="facebook"
-        value={formData.facebook || ""}
-        onChange={(e) => setFormData({ ...formData, facebook: e.target.value })}
-      />
-      <label>Instagram</label>
-      <input
-        type="url"
-        name="instagram"
-        value={formData.instagram || ""}
-        onChange={(e) => setFormData({ ...formData, instagram: e.target.value })}
-      />
-      <label>LinkedIn</label>
-      <input
-        type="url"
-        name="linkedin"
-        value={formData.linkedin || ""}
-        onChange={(e) => setFormData({ ...formData, linkedin: e.target.value })}
-      />
-      <label>Twitter</label>
-      <input
-        type="url"
-        name="twitter"
-        value={formData.twitter || ""}
-        onChange={(e) => setFormData({ ...formData, twitter: e.target.value })}
-      />
+    <div className="social-media-container">
+      <div className="navbar">
+        {[
+          "About",
+          "University",
+          "Collage",
+          "ITI/Vocational",
+          "Courses",
+          "Coaching Center",
+          "Tutor",
+          "Consultants",
+          "Social Media",
+          "Photos",
+          "Accolades",
+          "Management",
+          "Contact"
+        ].map((tab) => (
+          <span
+            key={tab}
+            className={tab === "Social Media" ? "tab active" : "tab"}
+          >
+            {tab}
+          </span>
+        ))}
+      </div>
+
+      <div className="social-section">
+        <h3>Social Media</h3>
+
+        <label>
+          Facebook : <input type="text" placeholder="Facebook profile link" />
+        </label>
+
+        <label>
+          Instagram : <input type="text" placeholder="Instagram profile link" />
+        </label>
+
+        <label>
+          LinkedIn : <input type="text" placeholder="LinkedIn profile link" />
+        </label>
+
+        <label>
+          X (Formerly Twitter) : <input type="text" placeholder="Twitter profile link" />
+        </label>
+
+        <label>
+          Youtube : <input type="text" placeholder="YouTube channel link" />
+        </label>
+
+        <div className="btn-row">
+          <button className="save-btn">Save</button>
+          <button className="cancel-btn">Cancel</button>
+        </div>
+      </div>
     </div>
   );
 };

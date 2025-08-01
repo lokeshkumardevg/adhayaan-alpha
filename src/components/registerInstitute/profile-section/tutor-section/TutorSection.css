@@ -1,40 +1,104 @@
-.section-wrapper {
-  margin-bottom: 40px;
+.tutor-section {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #ccc;
 }
 
-.section-title {
-  font-size: 20px;
+h3 {
+  color: maroon;
   margin-bottom: 20px;
-  color: #2a2a2a;
-  font-weight: 600;
 }
 
-.tutor-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 20px 30px;
-}
-
-.form-group {
+.row {
   display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.row label {
+  font-weight: bold;
+  min-width: 180px;
+}
+
+.row input, .row textarea {
+  padding: 5px;
+  min-width: 150px;
+  flex: 1;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.full {
   flex-direction: column;
 }
 
-.form-group label {
-  font-weight: 500;
-  margin-bottom: 6px;
-  font-size: 14px;
-  color: #333;
+.options label {
+  margin-right: 15px;
 }
 
-.form-group input {
-  padding: 10px 12px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  background: #fff;
+.add-btn {
+  padding: 4px 10px;
+  background: #ccc;
+  border: 1px solid #999;
+  cursor: pointer;
 }
 
-.full-width {
-  grid-column: span 2;
+.subject-table {
+  border: 1px solid #aaa;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #f9f9f9;
+}
+
+.sections {
+  background: #008000;
+  color: white;
+  padding: 4px 8px;
+  flex: 1;
+}
+
+.classes {
+  background: #c00;
+  color: white;
+  padding: 4px 8px;
+  flex: 1;
+}
+
+.subjects {
+  background: #ff0;
+  padding: 6px 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.hint {
+  font-size: 11px;
+  color: gray;
+}
+
+.btns {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  border: none;
+}
+
+.save-btn {
+  background-color: maroon;
+}
+
+.cancel-btn {
+  background-color: #777;
 }

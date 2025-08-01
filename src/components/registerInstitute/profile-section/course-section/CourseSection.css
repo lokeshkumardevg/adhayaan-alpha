@@ -1,23 +1,130 @@
-.section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
+.course-section {
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #fff;
 }
 
-.course-input {
+.section-header h3 {
+  font-weight: bold;
+  color: maroon;
+  margin-bottom: 5px;
+}
+
+.streams-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  margin-bottom: 20px;
+  padding-left: 10px;
+}
+
+.totals {
+  display: grid;
+  grid-template-columns: 1fr 200px;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.totals label {
+  font-weight: bold;
+  padding-top: 5px;
+}
+
+.totals input {
+  padding: 5px;
   width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+}
+
+.course-inputs {
+  background: #f9f9f9;
+  border: 1px dashed #aaa;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.course-name-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.course-name-row label {
+  width: 130px;
+  font-weight: bold;
+}
+
+.course-name-row input {
+  flex: 1;
+  padding: 5px;
+}
+
+.note {
+  font-size: 12px;
+  margin: 10px 0;
+  font-style: italic;
+  color: #444;
+}
+
+.details-grid {
+  display: grid;
+  grid-template-columns: 130px 1fr auto;
+  gap: 10px;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.details-grid input {
+  padding: 5px;
+}
+
+.info {
+  font-size: 11px;
+  font-style: italic;
+  color: #444;
 }
 
 .add-btn {
   margin-top: 10px;
+  background-color: #e6e6e6;
+  border: 1px solid #ccc;
   padding: 6px 12px;
-  font-size: 14px;
-  background-color: #3d84f5;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  font-weight: bold;
   cursor: pointer;
+}
+
+.course-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.chip {
+  background-color: #cce5ff;
+  padding: 8px 12px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+.action-buttons {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 8px 16px;
+  font-weight: bold;
+  border: none;
+  color: white;
+  font-size: 14px;
+}
+
+.save-btn {
+  background-color: maroon;
+}
+
+.cancel-btn {
+  background-color: #777;
 }

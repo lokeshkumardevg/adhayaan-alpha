@@ -1,0 +1,70 @@
+.coaching-center-section {
+  border: 1px solid #ccc;
+  padding: 20px;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+}
+
+h3 {
+  color: maroon;
+  margin-bottom: 20px;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.row label {
+  width: 160px;
+  font-weight: bold;
+}
+
+.row input {
+  padding: 6px;
+  width: 300px;
+}
+
+.row button {
+  font-size: 18px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.note {
+  font-size: 12px;
+  font-style: italic;
+  margin: 10px 0;
+}
+
+.info {
+  font-size: 11px;
+  font-style: italic;
+  color: #444;
+}
+
+.btns {
+  margin-top: 20px;
+  display: flex;
+  gap: 15px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  border: none;
+}
+
+.save-btn {
+  background-color: maroon;
+}
+
+.cancel-btn {
+  background-color: #777;
+}

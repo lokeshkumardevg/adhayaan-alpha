@@ -1,18 +1,74 @@
-.section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.section label {
-  display: block;
-  margin-top: 10px;
-  font-weight: 500;
-}
-
-.section input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border-radius: 4px;
+.main-form-wrapper {
+  max-width: 960px;
+  margin: 30px auto;
+  padding: 25px;
+  background-color: #fff;
   border: 1px solid #ccc;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-form-wrapper h3 {
+  color: maroon;
+  margin-bottom: 20px;
+  font-size: 22px;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 5px;
+}
+
+.management-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  margin-bottom: 20px;
+}
+
+.management-grid label {
+  font-weight: bold;
+  font-size: 14px;
+  display: block;
+  margin-bottom: 6px;
+  color: #333;
+}
+
+.management-grid input {
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 15px;
+  background-color: #fafafa;
+}
+
+.button-row {
+  text-align: right;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.save-btn {
+  background-color: maroon;
+}
+
+.save-btn:hover {
+  background-color: #a00000;
+}
+
+.cancel-btn {
+  background-color: #777;
+}
+
+.cancel-btn:hover {
+  background-color: #555;
 }

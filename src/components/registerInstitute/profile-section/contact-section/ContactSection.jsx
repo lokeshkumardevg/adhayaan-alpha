@@ -1,26 +1,37 @@
 import React from "react";
 import "./ContactSection.css";
 
-const ContactSection = ({ formData, setFormData }) => {
+const ContactSection = () => {
   return (
-    <div className="section">
-      <h3>Contact Information</h3>
+    <div className="contact-container">
+      <h3>Contact</h3>
 
-      <label>Alternate Mobile Number</label>
-      <input
-        type="text"
-        name="alternateMobile"
-        value={formData.alternateMobile || ""}
-        onChange={(e) => setFormData({ ...formData, alternateMobile: e.target.value })}
-      />
+      <div className="contact-grid">
+        <div className="left">
+          <p><strong>Address:</strong> </p>
+          <p><strong>Country:</strong> </p>
+          <p><strong>City:</strong> </p>
+          <p><strong>District:</strong> </p>
+          <p><strong>Pin Code:</strong> </p>
+        </div>
+        <div className="right">
+          <p><strong>ISD Code:</strong> </p>
+          <p><strong>Phone no:</strong> </p>
+          <p><strong>Official Website:</strong> </p>
+          <p><strong>Official Email:</strong> </p>
+        </div>
+      </div>
 
-      <label>Support Email</label>
-      <input
-        type="email"
-        name="supportEmail"
-        value={formData.supportEmail || ""}
-        onChange={(e) => setFormData({ ...formData, supportEmail: e.target.value })}
-      />
+      <div className="button-group">
+        <button className="save-btn">Save</button>
+        <button className="cancel-btn">Cancel</button>
+      </div>
+
+      <div className="image-preview">
+        <img src="/contact1.png" alt="Preview 1" />
+        <img src="/contact2.png" alt="Preview 2" />
+        <img src="/contact3.png" alt="Preview 3" />
+      </div>
     </div>
   );
 };

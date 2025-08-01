@@ -69,6 +69,7 @@ import InstitutionRegisterPage from "./components/registerInstitute/InstitutionR
 import InstitutionLandingPage from "./components/registerInstitute/InstitutionLandingPage";
 import InstitutionAccountForm from "./components/registerInstitute/InstitutionAccountForm";
 import DashboardNew from "./components/registerInstitute/dashboard/DashboardNew";
+import InstitutionSignInPage from "./components/registerInstitute/auth-institute/InstitutionSignInPage";
 
 // import Carousel from "./components/Latest news/Carousel"
 // import News from "./components/Latest news/News";
@@ -159,6 +160,7 @@ function App() {
         <Route path="registerInstitute" element={<InstitutionLandingPage/>}></Route>
          <Route path="institutedetails" element={<InstitutionAccountForm/>}></Route>
          <Route path="/dashboardnew" element={<DashboardNew/>}></Route>
+        <Route path="/login-institute" element={<InstitutionSignInPage/>}></Route>
         
         
       </Routes>

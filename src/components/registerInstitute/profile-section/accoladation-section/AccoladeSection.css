@@ -1,23 +1,87 @@
-.section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-
-.accolade-input {
-  width: 100%;
-  padding: 8px;
-  margin: 5px 0;
-  border-radius: 4px;
+.accolades-container {
+  font-family: Arial, sans-serif;
   border: 1px solid #ccc;
 }
 
-.add-btn {
-  margin-top: 10px;
-  padding: 6px 12px;
+.navbar {
+  background-color: maroon;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 10px;
+}
+
+.tab {
+  color: white;
+  padding: 5px 10px;
+  margin-right: 4px;
+  cursor: pointer;
   font-size: 14px;
-  background-color: #3d84f5;
+}
+
+.tab.active {
+  background-color: #2c7be5;
+  color: white;
+}
+
+.accolades-content {
+  padding: 20px;
+}
+
+.accolades-content h3 {
+  color: maroon;
+  margin-bottom: 15px;
+}
+
+.checkbox-columns {
+  display: flex;
+  gap: 60px;
+}
+
+.checkbox-label {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 14px;
+}
+
+.others-row {
+  display: flex;
+  align-items: center;
+  margin-top: 8px;
+  gap: 5px;
+}
+
+.others-row input {
+  padding: 4px 6px;
+  font-size: 14px;
+  width: 160px;
+}
+
+.add-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.btn-row {
+  margin-top: 20px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: bold;
   color: white;
   border: none;
-  border-radius: 4px;
   cursor: pointer;
+  margin-right: 15px;
+}
+
+.save-btn {
+  background-color: maroon;
+}
+
+.cancel-btn {
+  background-color: #777;
 }

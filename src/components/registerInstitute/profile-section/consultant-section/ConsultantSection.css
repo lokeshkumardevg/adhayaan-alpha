@@ -1,18 +1,77 @@
-.section h3 {
-  font-size: 18px;
+.consultant-section {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+h3 {
+  color: maroon;
   margin-bottom: 10px;
 }
 
-.section label {
-  display: block;
-  margin-top: 10px;
-  font-weight: 500;
+p {
+  margin: 10px 0;
 }
 
-.section input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
+.checkbox-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px 20px;
+  margin-bottom: 20px;
+}
+
+.checkbox-columns {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.checkbox-columns label {
+  flex: 1;
+}
+
+.checkbox-groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.group {
+  border-top: 1px solid #ccc;
+  padding-top: 10px;
+}
+
+.group strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #000;
+}
+
+.group label {
+  display: block;
+  margin-bottom: 6px;
+}
+
+.btn-row {
+  margin-top: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.save-btn, .cancel-btn {
+  padding: 8px 20px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.save-btn {
+  background-color: maroon;
+}
+
+.cancel-btn {
+  background-color: #777;
 }

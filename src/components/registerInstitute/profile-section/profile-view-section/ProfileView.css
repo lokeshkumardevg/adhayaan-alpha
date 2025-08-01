@@ -1,0 +1,77 @@
+.form-container {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  max-width: 960px;
+  margin: 30px auto;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 2px solid maroon;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+}
+
+.top-bar h2 {
+  font-size: 24px;
+  color: maroon;
+}
+
+.profile-pic {
+  height: 60px;
+  width: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 1px solid #ccc;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.profile-table td {
+  padding: 8px 10px;
+  border: 1px solid #e0e0e0;
+  vertical-align: top;
+}
+
+.profile-table td:first-child {
+  font-weight: bold;
+  background-color: #f9f9f9;
+  width: 40%;
+}
+
+.profile-table .section {
+  background-color: maroon;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+}
+
+.btn-group {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.btn-group button {
+  background-color: maroon;
+  color: white;
+  padding: 10px 25px;
+  font-size: 14px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn-group button:hover {
+  background-color: #b00000;
+}

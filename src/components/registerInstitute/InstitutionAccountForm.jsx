@@ -54,17 +54,23 @@ const InstitutionAccountForm = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setBackendError("");
+
     try {
-      const response = await axios.post("http://localhost/admin/index.php/Api/create_institute_account", {
-        ...formData,
-        selectedTypes,
-        otherTypeText: formData.otherType,
-      }, {
-        headers: { "Content-Type": "application/json" }
-      });
+      const response = await axios.post(
+        "http://localhost/admin/index.php/Api/create_institute_account",
+        {
+          ...formData,
+          selectedTypes,
+          otherTypeText: formData.otherType
+        },
+        {
+          headers: { "Content-Type": "application/json" }
+        }
+      );
 
       if (response.data.status === "200") {
-        navigate("/profile");
+        alert("Account created successfully.");
+        navigate("/login-institute");
       } else {
         setBackendError(response.data.msg || "Submission failed");
       }
@@ -107,7 +113,15 @@ const InstitutionAccountForm = () => {
           <label>Name of Institution:</label>
           <select className="text-input" name="institutionName" onChange={handleChange}>
             <option value="">Search your name</option>
+            <option value="Institute of Technology A">Institute of Technology A</option>
+            <option value="National Science College">National Science College</option>
+            <option value="Global University">Global University</option>
+            <option value="Metro Institute of Engineering">Metro Institute of Engineering</option>
+            <option value="City College of Arts">City College of Arts</option>
+            <option value="Greenfield Business School">Greenfield Business School</option>
           </select>
+
+
 
           <label>Add Institution Name:</label>
           <div className="flex-row">
@@ -211,11 +225,13 @@ const InstitutionAccountForm = () => {
 
           <label className="full-label">Privacy Settings:</label>
           <div className="privacy-group full-width">
-            {["Contact me on mobile for education products",
+            {[
+              "Contact me on mobile for education products",
               "Contact me via email for education products",
               "Send me Aadhyayan Newsletter email",
               "Yes, I have read and consent to Privacy Policy & Terms",
-              "I agree to be contacted for promotional purposes"].map((text, i) => (
+              "I agree to be contacted for promotional purposes"
+            ].map((text, i) => (
               <label key={i} className="checkbox-label">
                 <input
                   type="checkbox"
@@ -240,6 +256,7 @@ const InstitutionAccountForm = () => {
 };
 
 export default InstitutionAccountForm;
+
 
 // import React, { useState } from "react";
 // import axios from "axios";

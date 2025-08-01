@@ -1,16 +1,71 @@
-.section h3 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
-.section label {
-  display: block;
-  margin-top: 10px;
-  font-weight: 500;
-}
-.section input {
-  width: 100%;
-  padding: 8px;
-  margin-top: 4px;
-  border-radius: 4px;
+.social-media-container {
+  font-family: Arial, sans-serif;
   border: 1px solid #ccc;
+  background-color: #fff;
+}
+
+.navbar {
+  background-color: maroon;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 10px;
+}
+
+.tab {
+  color: white;
+  padding: 5px 10px;
+  margin-right: 4px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.tab.active {
+  background-color: #2c7be5;
+  color: white;
+}
+
+.social-section {
+  padding: 20px;
+}
+
+.social-section h3 {
+  color: maroon;
+  margin-bottom: 15px;
+}
+
+.social-section label {
+  display: block;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.social-section input {
+  width: 50%;
+  padding: 6px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.btn-row {
+  margin-top: 20px;
+}
+
+.save-btn,
+.cancel-btn {
+  padding: 8px 20px;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  border: none;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.save-btn {
+  background-color: maroon;
+}
+
+.cancel-btn {
+  background-color: #777;
 }
