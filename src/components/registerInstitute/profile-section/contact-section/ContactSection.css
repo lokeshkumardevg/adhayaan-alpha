@@ -1,10 +1,7 @@
 .contact-container {
-  max-width: 900px;
-  margin: auto;
-  padding: 20px;
+   padding: 20px;
+  border: 1px solid #ccc;
   background: #fff;
-  font-family: Tahoma, sans-serif;
-  border: 1px solid maroon;
 }
 
 h3 {

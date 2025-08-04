@@ -1,74 +1,85 @@
-.main-form-wrapper {
-  max-width: 960px;
-  margin: 30px auto;
-  padding: 25px;
-  background-color: #fff;
+.management-container {
+   padding: 20px;
   border: 1px solid #ccc;
-  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+  background: #fff;
 }
 
-.main-form-wrapper h3 {
+/* Red Tab Navbar */
+.navbar {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: maroon;
+  color: white;
+  padding: 5px 10px;
+  font-size: 14px;
+}
+
+.tab {
+  padding: 6px 10px;
+  color: white;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.tab.active {
+  background-color: royalblue;
+  border-radius: 2px;
+}
+
+/* Section Heading */
+.section-heading {
+  margin-top: 20px;
+  font-size: 20px;
   color: maroon;
-  margin-bottom: 20px;
-  font-size: 22px;
-  border-bottom: 2px solid #eee;
+  font-weight: 600;
+  border-bottom: 2px solid maroon;
   padding-bottom: 5px;
 }
 
+/* Management Grid */
 .management-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 20px;
 }
 
-.management-grid label {
-  font-weight: bold;
-  font-size: 14px;
-  display: block;
-  margin-bottom: 6px;
+.management-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr 2fr;
+  gap: 10px;
+  align-items: center;
+}
+
+.management-row label {
+  font-weight: 500;
   color: #333;
 }
 
-.management-grid input {
-  width: 100%;
-  padding: 8px 10px;
-  font-size: 14px;
+.management-row input {
+  padding: 8px;
   border: 1px solid #ccc;
   border-radius: 4px;
-  margin-bottom: 15px;
-  background-color: #fafafa;
+  width: 100%;
 }
 
-.button-row {
-  text-align: right;
+/* Buttons */
+.btn-row {
+  margin-top: 20px;
+  display: flex;
+  gap: 10px;
 }
 
 .save-btn,
 .cancel-btn {
-  padding: 10px 20px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 8px 20px;
+  background-color: maroon;
   color: white;
   border: none;
-  border-radius: 3px;
+  border-radius: 4px;
   cursor: pointer;
-  margin-left: 10px;
-}
-
-.save-btn {
-  background-color: maroon;
-}
-
-.save-btn:hover {
-  background-color: #a00000;
 }
 
 .cancel-btn {
-  background-color: #777;
-}
-
-.cancel-btn:hover {
   background-color: #555;
 }

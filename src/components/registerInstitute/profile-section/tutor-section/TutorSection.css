@@ -102,3 +102,10 @@ textarea {
 .cancel-btn {
   background-color: #777;
 }
+
+.success-message {
+  color: green;
+  font-weight: bold;
+  margin-top: 10px;
+}
+

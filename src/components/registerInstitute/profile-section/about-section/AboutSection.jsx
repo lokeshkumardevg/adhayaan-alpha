@@ -1,6 +1,6 @@
-// src/profile-section/about-section/AboutSection.jsx
 import React from "react";
 import "./AboutSection.css";
+import axios from "axios";
 
 const AboutSection = ({ formData, setFormData }) => {
   const handleChange = (e) => {
@@ -19,6 +19,35 @@ const AboutSection = ({ formData, setFormData }) => {
         ...prev,
         studyModes: [...updatedModes, mode],
       }));
+    }
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await axios.post(
+        "http://localhost:8081/admin/index.php/Api/save_about_section",
+        {
+          institution_id: localStorage.getItem("userId"),
+          about: formData.about,
+          year: formData.year,
+          institutionType: formData.institutionType,
+          studyModes: formData.studyModes || [],
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      if (response.data.status === "200") {
+        alert("✅ About section saved successfully!");
+      } else {
+        alert("❌ Failed to save about section!");
+      }
+    } catch (error) {
+      console.error("Save Error:", error);
+      alert("🚨 Server error. Please try again.");
     }
   };
 
@@ -51,12 +80,12 @@ const AboutSection = ({ formData, setFormData }) => {
           "Management",
           "Contact",
         ].map((tab, idx) => (
-          <span key={idx} className="tab-item">
+         <span key={tab} className={tab === "About" ? "tab active" : "tab"}>
             {tab}
           </span>
         ))}
       </div>
-
+     
       <div className="about-form">
         <label>About Institution / Tutor / Consultant:</label>
         <textarea
@@ -99,7 +128,9 @@ const AboutSection = ({ formData, setFormData }) => {
         </div>
 
         <div className="form-buttons">
-          <button className="save-btn">Save</button>
+          <button type="button" className="save-btn" onClick={handleSave}>
+            Save
+          </button>
           <button className="cancel-btn">Cancel</button>
         </div>
       </div>

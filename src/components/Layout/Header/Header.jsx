@@ -313,12 +313,13 @@ const Header = () => {
             // style={{ overflowX: "hidden" }}
             onClick={() => dispatch(decrement())}
           >
+            {/* login-institute */}
             {!email ? (
               <>
                 <div className="btn-div bts">
                   <button
                     className="btn hide-btn"
-                    onClick={() => navigate("/dashboardnew")}
+                    onClick={() => navigate("/registerInstitute")}
                   >
                     Register Institute
                   </button>

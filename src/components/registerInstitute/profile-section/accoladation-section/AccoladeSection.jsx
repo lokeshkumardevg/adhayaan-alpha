@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import "./AccoladeSection.css";
 
 const defaultAccolades = [
@@ -7,9 +8,24 @@ const defaultAccolades = [
   "DEB", "NCVT", "ICWA", "12(b)", "2(f)", "2(f) and 12(b)"
 ];
 
-const AccoladesSection = () => {
+const AccoladesSection = ({ userId }) => {
   const [accolades, setAccolades] = useState([]);
   const [others, setOthers] = useState("");
+  const [msg, setMsg] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await axios.get(`http://localhost:8081/admin/index.php/Api/get_accolades?user_id=${1}`);
+        if (res.data.status === "200") {
+          setAccolades(res.data.data.accolades || []);
+        }
+      } catch (err) {
+        console.error("Fetch accolades error:", err);
+      }
+    };
+    fetchData();
+  }, [userId]);
 
   const handleCheck = (value) => {
     setAccolades((prev) =>
@@ -26,23 +42,30 @@ const AccoladesSection = () => {
     }
   };
 
+  const handleSave = async () => {
+    try {
+      const res = await axios.post("http://localhost:8081/admin/index.php/Api/save_accolades", {
+        user_id: 1,
+        accolades
+      });
+
+      if (res.data.status === "200") {
+        setMsg("Saved successfully!");
+        setTimeout(() => setMsg(""), 3000);
+      }
+    } catch (err) {
+      console.error("Save error:", err);
+      setMsg("Save failed.");
+    }
+  };
+
   return (
     <div className="accolades-container">
       <div className="navbar">
         {[
-          "About",
-          "University",
-          "Collage",
-          "ITI/Vocational",
-          "Courses",
-          "Coaching Center",
-          "Tutor",
-          "Consultants",
-          "Social Media",
-          "Photos",
-          "Accolades",
-          "Management",
-          "Contact",
+          "About", "University", "Collage", "ITI/Vocational", "Courses",
+          "Coaching Center", "Tutor", "Consultants", "Social Media",
+          "Photos", "Accolades", "Management", "Contact"
         ].map((tab) => (
           <span key={tab} className={tab === "Accolades" ? "tab active" : "tab"}>
             {tab}
@@ -89,9 +112,11 @@ const AccoladesSection = () => {
         </div>
 
         <div className="btn-row">
-          <button className="save-btn">Save</button>
-          <button className="cancel-btn">Cancel</button>
+          <button className="save-btn" onClick={handleSave}>Save</button>
+          <button className="cancel-btn" onClick={() => window.location.reload()}>Cancel</button>
         </div>
+
+        {msg && <p className="success-msg">{msg}</p>}
       </div>
     </div>
   );

@@ -3,7 +3,14 @@ import "./ContactSection.css";
 
 const ContactSection = () => {
   return (
-    <div className="contact-container">
+   <div className="section-wrapper contact-form-wrapper">
+     <div className="navbar">
+        {["About", "University", "Collage", "ITI/Vocational", "Courses", "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos", "Accolades", "Management", "Contact"].map((tab) => (
+          <span key={tab} className={tab === "Contact" ? "tab active" : "tab"}>
+            {tab}
+          </span>
+        ))}
+      </div>
       <h3>Contact</h3>
 
       <div className="contact-grid">

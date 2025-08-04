@@ -9,6 +9,13 @@ const UniversitySection = ({ formData, setFormData }) => {
 
   return (
     <div className="university-section">
+       <div className="navbar">
+        {["About", "University", "Collage", "ITI/Vocational", "Courses", "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos", "Accolades", "Management", "Contact"].map((tab) => (
+          <span key={tab} className={tab === "University" ? "tab active" : "tab"}>
+            {tab}
+          </span>
+        ))}
+      </div>
       <div className="section-heading">University</div>
 
       <label>Ownership:</label>

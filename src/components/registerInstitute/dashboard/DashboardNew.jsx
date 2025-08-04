@@ -13,7 +13,7 @@ import ProfileView from "../profile-section/profile-view-section/ProfileView";
 import ProfileHeaderCard from "../profile-section/dashboard-header/ProfileHeaderCard";
 import "./Dashboard.css";
 
-const DashboardNew = ({ user = { type: "Tutor", name: "Amit Sharma" } }) => {
+const DashboardNew = ({ user = { type: "Admin", name: "Amit Sharma" } }) => {
   const [coverImage, setCoverImage] = useState(null);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
@@ -34,16 +34,10 @@ const DashboardNew = ({ user = { type: "Tutor", name: "Amit Sharma" } }) => {
     courses: []
   });
 
-  const handleImageUpload = (e) => {
-    const file = e.target.files[0];
-    if (file) setCoverImage(URL.createObjectURL(file));
-  };
-
   const handleLogout = () => {
     alert("Logout logic goes here");
   };
 
-  // Close menu on outside click
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
@@ -56,30 +50,41 @@ const DashboardNew = ({ user = { type: "Tutor", name: "Amit Sharma" } }) => {
 
   return (
     <div className="dashboard-wrapper">
-      {/* Top Navbar */}
+      {/* 🔴 Top Navbar */}
       <div className="top-navbar">
         <div className="logo">🎓 Aadhyayan</div>
 
         <div className="navbar-center-title">Institute Dashboard</div>
 
-        <div className="menu-dropdown" ref={menuRef}>
-          <div className="menu-icon" onClick={() => setMenuOpen(!menuOpen)}>
-            &#9776;
-          </div>
+       <div className="menu-dropdown" ref={menuRef}>
+  <div className="profile-avatar" onClick={() => setMenuOpen(!menuOpen)}>
+    <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="Profile" />
+  </div>
 
-          {menuOpen && (
-            <div className="dropdown-content">
-              <p>{user.name}</p>
-              <button onClick={handleLogout}>Logout</button>
-            </div>
-          )}
+  {menuOpen && (
+    <div className="dropdown-box">
+      <div className="profile-info">
+        <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="User" />
+        <div>
+          <h4>{user?.name || "Admin"}</h4>
+          <p>{user?.email || "user@gmail.com"}</p>
         </div>
       </div>
+      <button className="view-profile-btn">View Profile</button>
+      <div className="logout" onClick={handleLogout}>
+        <i className="fas fa-power-off"></i> Logout
+      </div>
+    </div>
+  )}
+</div>
 
-      {/* Cover Section */}
+
+      </div>
+
+      {/* 🖼️ Profile Header */}
       <ProfileHeaderCard user={{ ...user, username: "jnicsrofficial" }} />
 
-      {/* Profile Form Sections */}
+      {/* 🔧 Sections */}
       <div className="dashboard-sections">
         <AboutSection formData={formData} setFormData={setFormData} />
 

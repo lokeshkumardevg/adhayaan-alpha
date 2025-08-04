@@ -1,15 +1,114 @@
 .top-navbar {
   width: 100%;
-  height: 60px;
-  background-color: #004aad;
-  color: white;
+  max-width: 100%;
+  overflow-x: hidden;      /* 👈 Prevent horizontal scroll */
+  box-sizing: border-box;  /* 👈 Padding/width fix */
+  padding: 0 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 30px;
+  background-color: maroon;
+  color: white;
+  height: 60px;
   position: sticky;
   top: 0;
   z-index: 1000;
+  overflow: visible;
+}
+
+.menu-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid white;
+}
+
+.profile-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* The dropdown box */
+.dropdown-box {
+  position: absolute;
+  top: 50px; /* adjust as needed */
+  right: 0;
+  width: 240px;
+  background: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  border-radius: 10px;
+  padding: 15px;
+  z-index: 999;
+  transition: all 0.3s ease-in-out;
+}
+
+/* Profile section in dropdown */
+.dropdown-box .profile-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.dropdown-box .profile-info img {
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.dropdown-box .profile-info h4 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+.dropdown-box .profile-info p {
+  margin: 2px 0 0;
+  font-size: 13px;
+  color: #888;
+}
+
+.dropdown-box .view-profile-btn {
+  display: inline-block;
+  background-color: #ff5f5f;
+  color: white;
+  padding: 6px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.dropdown-box .view-profile-btn:hover {
+  background-color: #e04e4e;
+}
+
+/* Logout style */
+.dropdown-box .logout {
+  margin-top: 15px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+  color: #444;
+  font-size: 15px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.dropdown-box .logout i {
+  font-size: 18px;
 }
 
 .logo {
@@ -30,6 +129,7 @@
   font-size: 26px;
   cursor: pointer;
   padding: 5px;
+  user-select: none;
 }
 
 .dropdown-content {
@@ -60,55 +160,6 @@
   border-radius: 4px;
   cursor: pointer;
   font-size: 14px;
-}
-
-/* Existing classes untouched below */
-.cover-section {
-  background: #f4f6f8;
-  padding: 40px 20px 30px;
-  text-align: center;
-  border-bottom: 1px solid #ddd;
-}
-
-.profile-photo-wrapper {
-  position: relative;
-  display: inline-block;
-}
-
-.profile-photo {
-  width: 130px;
-  height: 130px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
-
-.edit-photo-btn {
-  position: absolute;
-  bottom: 5px;
-  right: -10px;
-  background-color: #004aad;
-  color: white;
-  padding: 6px 10px;
-  border-radius: 20px;
-  font-size: 12px;
-  cursor: pointer;
-}
-
-.profile-title {
-  margin-top: 20px;
-}
-
-.profile-title h2 {
-  font-size: 24px;
-  color: #222;
-  margin-bottom: 10px;
-}
-
-.profile-title p {
-  font-size: 14px;
-  color: #555;
 }
 
 .dashboard-sections {

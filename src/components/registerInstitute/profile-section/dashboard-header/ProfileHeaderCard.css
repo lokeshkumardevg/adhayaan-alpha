@@ -87,3 +87,28 @@
   color: #222;
   border-top: 2px dashed #4b8cff;
 }
+/* ProfileHeaderCard.css */
+.profile-username input.username-input {
+  font-size: 1.1rem;
+  border: none;
+  border-bottom: 1px dashed #ccc;
+  background: transparent;
+  outline: none;
+  padding: 4px 8px;
+  text-align: center;
+}
+.logo-upload-label {
+  cursor: pointer;
+}
+.institution-logo-circle input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.institution-logo-left img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  cursor: pointer;
+}

@@ -1,73 +1,56 @@
 import React from "react";
 import "./ManagementSection.css";
 
-const ManagementSection = () => {
-  return (
-    <div className="main-form-wrapper">
-      <h3>Management</h3>
-      <form>
-        <div className="management-grid">
-          <div>
-            <label>Chancellor :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Vice Chancellor :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Pro-Vice Chancellor :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Chairman :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Vice Chairman :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Registrar :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Director :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Principle :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-          <div>
-            <label>Training & Placement Officer (TPO) :</label>
-            <input type="text" />
-            <label>Email :</label>
-            <input type="email" />
-          </div>
-        </div>
+const managementFields = [
+  "Chancellor",
+  "Vice Chancellor",
+  "Pro-Vice Chancellor",
+  "Chairman",
+  "Vice Chairman",
+  "Registrar",
+  "Director",
+  "Principle",
+  "Training & Placement Officer (TPO)"
+];
 
-        <div className="button-row">
-          <button type="submit" className="save-btn">Save</button>
-          <button type="button" className="cancel-btn">Cancel</button>
-        </div>
-      </form>
+const ManagementSection = () => {
+  const tabs = [
+    "About", "University", "Collage", "ITI/Vocational", "Courses",
+    "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos",
+    "Accolades", "Management", "Contact"
+  ];
+
+  return (
+    <div className="management-container">
+      {/* Red Navbar */}
+      <div className="navbar">
+        {tabs.map((tab) => (
+          <span key={tab} className={tab === "Management" ? "tab active" : "tab"}>
+            {tab}
+          </span>
+        ))}
+      </div>
+
+      {/* Section Header */}
+      <h3 className="section-heading">Management</h3>
+
+      {/* Input Fields */}
+      <div className="management-grid">
+        {managementFields.map((title, index) => (
+          <div className="management-row" key={index}>
+            <label>{title}:</label>
+            <input type="text" placeholder={`Enter name`} />
+            <label>Email:</label>
+            <input type="email" placeholder="Enter email" />
+          </div>
+        ))}
+      </div>
+
+      {/* Buttons */}
+      <div className="btn-row">
+        <button className="save-btn">Save</button>
+        <button className="cancel-btn">Cancel</button>
+      </div>
     </div>
   );
 };
