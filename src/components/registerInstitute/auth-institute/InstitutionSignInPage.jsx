@@ -58,7 +58,7 @@ const InstitutionSignInPage = () => {
       if (response.data?.status === "200") {
         setIsOtpSent(true);
         setBackendError("OTP sent successfully.");
-        startTimer(); // Start countdown
+        startTimer();
       } else {
         setBackendError(response.data.msg || "Failed to send OTP.");
       }
@@ -80,24 +80,20 @@ const InstitutionSignInPage = () => {
 
       if (response.data?.status === "200") {
         const userData = response.data;
-        localStorage.setItem("userId", userData.user_id);
-        localStorage.setItem("name", userData.name);
-        localStorage.setItem("fatherName", userData.fatherName);
-        localStorage.setItem("gender", userData.gender);
-        localStorage.setItem("course_id", userData.course_id);
-        localStorage.setItem("contactNo", userData.mobile);
-        localStorage.setItem("email", userData.email);
-        localStorage.setItem("second_course_id", userData.second_course_id);
-        localStorage.setItem("profile_image", userData.profileImage);
-        localStorage.setItem("AdhyayanAuth", JSON.stringify({ mobile: identifier }));
+
+        // 🟢 Save all user info
+        localStorage.setItem("AdhyayanAuth", JSON.stringify({
+          userId: userData.id,
+          name: userData.name,
+          username: userData.username,
+          institution_type: userData.type,
+          institution_type: userData.institution_type,
+          email: userData.email,
+          profileImage: userData.profileImage || "",
+        }));
 
         dispatch(logInShowNav());
-
-        if (userData.course_id > 0) {
-          navigate("/dashboard/user", { replace: true });
-        } else {
-          navigate("/choose-course", { replace: true });
-        }
+        navigate("/dashboardnew", { replace: true });
       } else {
         setBackendError(response.data.msg || "Invalid OTP. Please try again.");
       }
@@ -143,18 +139,13 @@ const InstitutionSignInPage = () => {
 
           {backendError && <p className="error-message">{backendError}</p>}
 
-          {isOtpSent && !showResend && (
-            <p className="timer-text">Resend OTP in {timer} seconds</p>
-          )}
-
+          {isOtpSent && !showResend && <p className="timer-text">Resend OTP in {timer} seconds</p>}
           {isOtpSent && showResend && (
             <p className="resend-text" onClick={handleSendOtp}>🔁 Resend OTP</p>
           )}
 
           <div className="actions">
-            {loading ? (
-              <Loder />
-            ) : (
+            {loading ? <Loder /> : (
               <button onClick={isOtpSent ? handleVerifyOtp : handleSendOtp}>
                 {isOtpSent ? "Verify OTP" : "Send OTP"}
               </button>
@@ -162,8 +153,7 @@ const InstitutionSignInPage = () => {
           </div>
 
           <p className="note-text">
-            Need help?{" "}
-            <span onClick={() => navigate("/contact")}>Contact Support</span>
+            Need help? <span onClick={() => navigate("/contact")}>Contact Support</span>
           </p>
         </div>
       </div>

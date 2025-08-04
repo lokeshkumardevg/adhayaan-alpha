@@ -170,4 +170,19 @@
   .text-input.small {
     width: 100%;
   }
+
+  .register-btn-sm {
+  padding: 4px 10px;       /* chhoti padding */
+  font-size: 12px;         /* chhoti text size */
+  border-radius: 4px;      /* halka rounded corner */
+  background-color: #007bff; /* example blue background */
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.register-btn-sm:hover {
+  background-color: #0056b3;
+}
+
 }

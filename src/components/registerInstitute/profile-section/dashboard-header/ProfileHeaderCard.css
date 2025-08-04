@@ -112,3 +112,25 @@
   object-fit: cover;
   cursor: pointer;
 }
+.cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+.cover-box {
+  position: relative;
+  height: 180px;
+  overflow: hidden;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cover-text,
+.institution-logo-circle {
+  z-index: 2;
+  position: relative;
+}

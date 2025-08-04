@@ -11,12 +11,23 @@ import ManagementSection from "../profile-section/management-section/ManagementS
 import ContactSection from "../profile-section/contact-section/ContactSection";
 import ProfileView from "../profile-section/profile-view-section/ProfileView";
 import ProfileHeaderCard from "../profile-section/dashboard-header/ProfileHeaderCard";
+import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
-const DashboardNew = ({ user = { type: "Admin", name: "Amit Sharma" } }) => {
-  const [coverImage, setCoverImage] = useState(null);
+const DashboardNew = () => {
+  const storedUser = JSON.parse(localStorage.getItem("AdhyayanAuth"));
+  const [user, setUser] = useState(storedUser || {
+    name: "Admin",
+    type: "Tutor",
+    email: "admin@gmail.com",
+    username: "jnicsrofficial",
+    profileImage: "",
+  });
+  const check = {...user}
+  console.log("User data:", check.userId);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     about: "",
@@ -31,11 +42,12 @@ const DashboardNew = ({ user = { type: "Admin", name: "Amit Sharma" } }) => {
     accolades: [],
     headName: "",
     alternateMobile: "",
-    courses: []
+    courses: [],
   });
 
   const handleLogout = () => {
-    alert("Logout logic goes here");
+    localStorage.removeItem("AdhyayanAuth");
+    navigate("/login-institute", { replace: true });
   };
 
   useEffect(() => {
@@ -50,55 +62,52 @@ const DashboardNew = ({ user = { type: "Admin", name: "Amit Sharma" } }) => {
 
   return (
     <div className="dashboard-wrapper">
-      {/* 🔴 Top Navbar */}
       <div className="top-navbar">
         <div className="logo">🎓 Aadhyayan</div>
-
         <div className="navbar-center-title">Institute Dashboard</div>
 
-       <div className="menu-dropdown" ref={menuRef}>
-  <div className="profile-avatar" onClick={() => setMenuOpen(!menuOpen)}>
-    <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="Profile" />
-  </div>
+        <div className="menu-dropdown" ref={menuRef}>
+          <div className="profile-avatar" onClick={() => setMenuOpen(!menuOpen)}>
+            <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="Profile" />
+          </div>
 
-  {menuOpen && (
-    <div className="dropdown-box">
-      <div className="profile-info">
-        <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="User" />
-        <div>
-          <h4>{user?.name || "Admin"}</h4>
-          <p>{user?.email || "user@gmail.com"}</p>
+          {menuOpen && (
+            <div className="dropdown-box">
+              <div className="profile-info">
+                <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="User" />
+                <div>
+                  <h4>{user.userId.username?.name || "Admin"}</h4>
+                  <p>{user?.email || "user@gmail.com"}</p>
+                </div>
+              </div>
+              <button className="view-profile-btn">View Profile</button>
+              <div className="logout" onClick={handleLogout}>
+                <i className="fas fa-power-off"></i> Logout
+              </div>
+            </div>
+          )}
         </div>
       </div>
-      <button className="view-profile-btn">View Profile</button>
-      <div className="logout" onClick={handleLogout}>
-        <i className="fas fa-power-off"></i> Logout
-      </div>
-    </div>
-  )}
-</div>
 
+      <ProfileHeaderCard user={{ ...user, username: user.userId.username?.username || "jnicsrofficial" }} />
 
-      </div>
-
-      {/* 🖼️ Profile Header */}
-      <ProfileHeaderCard user={{ ...user, username: "jnicsrofficial" }} />
-
-      {/* 🔧 Sections */}
       <div className="dashboard-sections">
         <AboutSection formData={formData} setFormData={setFormData} />
 
-        {user.type === "Tutor" && (
+       {user.userId.institution_type === "Tutor" && (
           <TutorSection formData={formData} setFormData={setFormData} />
         )}
-        {user.type === "University" && (
+        {user.userId.institution_type === "University" && (
           <UniversitySection formData={formData} setFormData={setFormData} />
         )}
-        {user.type === "Consultant" && (
+        {user.userId.institution_type === "Consultant" && (
           <ConsultantSection formData={formData} setFormData={setFormData} />
         )}
+        
+          {user.userId.institution_type === "Courses" && (
+           <CourseSection formData={formData} setFormData={setFormData} />
+        )}
 
-        <CourseSection formData={formData} setFormData={setFormData} />
         <SocialMediaSection formData={formData} setFormData={setFormData} />
         <PhotosSection formData={formData} setFormData={setFormData} />
         <AccoladeSection formData={formData} setFormData={setFormData} />

@@ -5,6 +5,8 @@ import "./InstitutionAccountForm.css";
 
 const InstitutionAccountForm = () => {
   const [selectedTypes, setSelectedTypes] = useState([]);
+  const [formErrors, setFormErrors] = useState({});
+  const [backendError, setBackendError] = useState("");
   const [formData, setFormData] = useState({
     universityName: "",
     collegeName: "",
@@ -14,7 +16,6 @@ const InstitutionAccountForm = () => {
     consultantName: "",
     otherType: "",
     otherTypeName: "",
-
     address: "",
     country: "",
     city: "",
@@ -25,7 +26,6 @@ const InstitutionAccountForm = () => {
     privacyPreferences: [],
   });
 
-  const [backendError, setBackendError] = useState("");
   const navigate = useNavigate();
 
   const handleTypeChange = (type) => {
@@ -59,9 +59,80 @@ const InstitutionAccountForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const validateForm = () => {
+    const errors = {};
+
+    if (selectedTypes.length === 0)
+      errors.selectedTypes = "Please select at least one institution type.";
+    if (!formData.address.trim()) errors.address = "Address is required.";
+    if (!formData.country.trim()) errors.country = "Country is required.";
+    if (!formData.city.trim()) errors.city = "City is required.";
+    if (!formData.district.trim()) errors.district = "District is required.";
+    if (!formData.pincode.trim()) errors.pincode = "Pin code is required.";
+    if (!formData.mobile.trim()) errors.mobile = "Mobile number is required.";
+
+    if (selectedTypes.includes("University") && !formData.universityName.trim())
+      errors.universityName = "University name is required.";
+
+    if (selectedTypes.includes("College") && !formData.collegeName.trim())
+      errors.collegeName = "College name is required.";
+
+    if (selectedTypes.includes("ITI / Vocational") && !formData.itiName.trim())
+      errors.itiName = "ITI/Vocational name is required.";
+
+    if (selectedTypes.includes("Coaching Center") && !formData.coachingName.trim())
+      errors.coachingName = "Coaching center name is required.";
+
+    if (selectedTypes.includes("Tutor") && !formData.tutorName.trim())
+      errors.tutorName = "Tutor name is required.";
+
+    if (selectedTypes.includes("Consultant") && !formData.consultantName.trim())
+      errors.consultantName = "Consultant name is required.";
+
+    if (selectedTypes.includes("Other") && !formData.otherTypeName.trim())
+      errors.otherTypeName = "Please specify the custom type.";
+
+    return errors;
+  };
+
+  const checkMobileExists = async (mobile) => {
+    try {
+      const res = await axios.post(
+        "http://localhost/admin/index.php/Api/check_mobile_exists",
+        { mobile },
+        { headers: { "Content-Type": "application/json" } }
+      );
+      return res.data.exists;
+    } catch (err) {
+      console.error("Error checking mobile:", err);
+      return false;
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setBackendError("");
+    setFormErrors({});
+
+    const errors = validateForm();
+    if (Object.keys(errors).length > 0) {
+      setFormErrors(errors);
+      return;
+    }
+
+    const exists = await checkMobileExists(formData.mobile);
+    if (exists) {
+      setBackendError(
+        <>
+          This mobile number is already registered.{" "}
+            <button className="register-btn-sm" onClick={() => navigate("/login-institute")}>
+            Go To Login
+          </button>
+          .
+        </>
+      );
+      return;
+    }
 
     try {
       const response = await axios.post(
@@ -90,15 +161,7 @@ const InstitutionAccountForm = () => {
         <div className="form-grid">
           <label className="full-label">Institution Type*:</label>
           <div className="checkbox-group full-width">
-            {[
-              "University",
-              "College",
-              "ITI / Vocational",
-              "Coaching Center",
-              "Tutor",
-              "Consultant",
-              "Other",
-            ].map((type) => (
+            {["University", "College", "ITI / Vocational", "Coaching Center", "Tutor", "Consultant", "Other"].map((type) => (
               <label key={type} className="checkbox-label">
                 <input
                   type="checkbox"
@@ -109,6 +172,7 @@ const InstitutionAccountForm = () => {
               </label>
             ))}
           </div>
+          {formErrors.selectedTypes && <p className="error-message">{formErrors.selectedTypes}</p>}
 
           {selectedTypes.includes("University") && (
             <>
@@ -117,10 +181,10 @@ const InstitutionAccountForm = () => {
                 type="text"
                 className="text-input"
                 name="universityName"
-                placeholder="Enter university name"
                 value={formData.universityName}
                 onChange={handleChange}
               />
+              {formErrors.universityName && <p className="error-message">{formErrors.universityName}</p>}
             </>
           )}
 
@@ -131,10 +195,10 @@ const InstitutionAccountForm = () => {
                 type="text"
                 className="text-input"
                 name="collegeName"
-                placeholder="Enter college name"
                 value={formData.collegeName}
                 onChange={handleChange}
               />
+              {formErrors.collegeName && <p className="error-message">{formErrors.collegeName}</p>}
             </>
           )}
 
@@ -145,10 +209,10 @@ const InstitutionAccountForm = () => {
                 type="text"
                 className="text-input"
                 name="itiName"
-                placeholder="Enter ITI/Vocational institute name"
                 value={formData.itiName}
                 onChange={handleChange}
               />
+              {formErrors.itiName && <p className="error-message">{formErrors.itiName}</p>}
             </>
           )}
 
@@ -159,10 +223,10 @@ const InstitutionAccountForm = () => {
                 type="text"
                 className="text-input"
                 name="coachingName"
-                placeholder="Enter coaching center name"
                 value={formData.coachingName}
                 onChange={handleChange}
               />
+              {formErrors.coachingName && <p className="error-message">{formErrors.coachingName}</p>}
             </>
           )}
 
@@ -173,10 +237,10 @@ const InstitutionAccountForm = () => {
                 type="text"
                 className="text-input"
                 name="tutorName"
-                placeholder="Enter tutor name"
                 value={formData.tutorName}
                 onChange={handleChange}
               />
+              {formErrors.tutorName && <p className="error-message">{formErrors.tutorName}</p>}
             </>
           )}
 
@@ -187,10 +251,10 @@ const InstitutionAccountForm = () => {
                 type="text"
                 className="text-input"
                 name="consultantName"
-                placeholder="Enter consultant name"
                 value={formData.consultantName}
                 onChange={handleChange}
               />
+              {formErrors.consultantName && <p className="error-message">{formErrors.consultantName}</p>}
             </>
           )}
 
@@ -201,10 +265,10 @@ const InstitutionAccountForm = () => {
                 type="text"
                 className="text-input"
                 name="otherTypeName"
-                placeholder="Enter custom type"
                 value={formData.otherTypeName}
                 onChange={handleChange}
               />
+              {formErrors.otherTypeName && <p className="error-message">{formErrors.otherTypeName}</p>}
             </>
           )}
 
@@ -217,6 +281,7 @@ const InstitutionAccountForm = () => {
             value={formData.address}
             onChange={handleChange}
           />
+          {formErrors.address && <p className="error-message">{formErrors.address}</p>}
 
           <label>Country*:</label>
           <input
@@ -226,6 +291,7 @@ const InstitutionAccountForm = () => {
             value={formData.country}
             onChange={handleChange}
           />
+          {formErrors.country && <p className="error-message">{formErrors.country}</p>}
 
           <label>City*:</label>
           <input
@@ -235,6 +301,7 @@ const InstitutionAccountForm = () => {
             value={formData.city}
             onChange={handleChange}
           />
+          {formErrors.city && <p className="error-message">{formErrors.city}</p>}
 
           <label>District*:</label>
           <input
@@ -244,6 +311,7 @@ const InstitutionAccountForm = () => {
             value={formData.district}
             onChange={handleChange}
           />
+          {formErrors.district && <p className="error-message">{formErrors.district}</p>}
 
           <label>Pin Code*:</label>
           <input
@@ -253,6 +321,7 @@ const InstitutionAccountForm = () => {
             value={formData.pincode}
             onChange={handleChange}
           />
+          {formErrors.pincode && <p className="error-message">{formErrors.pincode}</p>}
 
           <label>ISD Code & Mobile:</label>
           <div className="flex-row">
@@ -275,6 +344,7 @@ const InstitutionAccountForm = () => {
               onChange={handleChange}
             />
           </div>
+          {formErrors.mobile && <p className="error-message">{formErrors.mobile}</p>}
 
           <label className="full-label">Privacy Settings:</label>
           <div className="privacy-group full-width">
@@ -303,11 +373,7 @@ const InstitutionAccountForm = () => {
           <button type="submit" className="submit-btn">
             Create your account
           </button>
-          <button
-            type="button"
-            className="cancel-btn"
-            onClick={() => window.location.reload()}
-          >
+          <button type="button" className="cancel-btn" onClick={() => window.location.reload()}>
             Cancel
           </button>
         </div>
