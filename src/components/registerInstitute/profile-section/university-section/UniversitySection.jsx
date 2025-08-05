@@ -1,60 +1,87 @@
 // src/profile-section/university-section/UniversitySection.jsx
 import React from "react";
+import axios from "axios";
 import "./UniversitySection.css";
 
 const UniversitySection = ({ formData, setFormData }) => {
+
+  const userdat = JSON.parse(localStorage.getItem("AdhyayanAuth"));
+  
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+  formData.user_id = userdat.user_id.id;
+  const handleSave = async () => {
+    try {
+      const res = await axios.post(
+        "http://localhost/admin/index.php/Api/save_university_section",
+        formData
+      );
+
+      if (res.data.status === 200) {
+        alert("University Section Saved Successfully!");
+      } else {
+        alert("Failed to save.");
+      }
+    } catch (err) {
+      console.error("Save Error:", err);
+    }
   };
 
   return (
     <div className="university-section">
-       <div className="navbar">
-        {["About", "University", "Collage", "ITI/Vocational", "Courses", "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos", "Accolades", "Management", "Contact"].map((tab) => (
-          <span key={tab} className={tab === "University" ? "tab active" : "tab"}>
+      <div className="navbar">
+        {[
+          "About",
+          "University",
+          "Collage",
+          "ITI/Vocational",
+          "Courses",
+          "Coaching Center",
+          "Tutor",
+          "Consultants",
+          "Social Media",
+          "Photos",
+          "Accolades",
+          "Management",
+          "Contact",
+        ].map((tab) => (
+          <span
+            key={tab}
+            className={tab === "University" ? "tab active" : "tab"}
+          >
             {tab}
           </span>
         ))}
       </div>
+
       <div className="section-heading">University</div>
 
       <label>Ownership:</label>
-      <div className="radio-group">
-        <label>
-          <input
-            type="radio"
-            name="ownership"
-            value="Govt"
-            checked={formData.ownership === "Govt"}
-            onChange={handleChange}
-          />
-          Govt
-        </label>
-        <label>
-          <input
-            type="radio"
-            name="ownership"
-            value="Private"
-            checked={formData.ownership === "Private"}
-            onChange={handleChange}
-          />
-          Private
-        </label>
-      </div>
+      <select
+        name="ownership"
+        value={formData.ownership || ""}
+        onChange={handleChange}
+        className="text-input"
+      >
+        <option value="">-- Select Ownership --</option>
+        <option value="Govt">Govt</option>
+        <option value="Private">Private</option>
+      </select>
 
       <label>Ownership Type:</label>
-      <div className="ownership-types">
-        {[
-          "Central University",
-          "State University",
-          "Private University",
-          "Deemed University",
-        ].map((type, index) => (
-          <span key={index} className="ownership-type-item">
-            {type}
-          </span>
-        ))}
-      </div>
+      <select
+        name="ownershipType"
+        value={formData.ownershipType || ""}
+        onChange={handleChange}
+        className="text-input"
+      >
+        <option value="">-- Select Ownership Type --</option>
+        <option value="Central University">Central University</option>
+        <option value="State University">State University</option>
+        <option value="Private University">Private University</option>
+        <option value="Deemed University">Deemed University</option>
+      </select>
 
       <label>Total no of approved colleges:</label>
       <input
@@ -93,7 +120,9 @@ const UniversitySection = ({ formData, setFormData }) => {
       />
 
       <div className="form-buttons">
-        <button className="save-btn">Save</button>
+        <button className="save-btn" onClick={handleSave}>
+          Save
+        </button>
         <button className="cancel-btn">Cancel</button>
       </div>
     </div>

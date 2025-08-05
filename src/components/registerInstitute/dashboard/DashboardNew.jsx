@@ -21,10 +21,10 @@ const DashboardNew = () => {
     type: "Tutor",
     email: "admin@gmail.com",
     username: "jnicsrofficial",
-    profileImage: "",
+
   });
-  const check = {...user}
-  console.log("User data:", check.userId);
+ 
+  console.log("User data:", user);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
   const navigate = useNavigate();
@@ -76,7 +76,7 @@ const DashboardNew = () => {
               <div className="profile-info">
                 <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="User" />
                 <div>
-                  <h4>{user.userId.username?.name || "Admin"}</h4>
+                  <h4>{user.user_id.username || "Admin"}</h4>
                   <p>{user?.email || "user@gmail.com"}</p>
                 </div>
               </div>
@@ -89,22 +89,22 @@ const DashboardNew = () => {
         </div>
       </div>
 
-      <ProfileHeaderCard user={{ ...user, username: user.userId.username?.username || "jnicsrofficial" }} />
-
+      <ProfileHeaderCard user={{ ...user, username: user.user_id.username || "jnicsrofficial" }} />
+                
       <div className="dashboard-sections">
         <AboutSection formData={formData} setFormData={setFormData} />
 
-       {user.userId.institution_type === "Tutor" && (
+       {user.user_id.institution_type === "Tutor" && (
           <TutorSection formData={formData} setFormData={setFormData} />
         )}
-        {user.userId.institution_type === "University" && (
+        {user.user_id.institution_type === "University" && (
           <UniversitySection formData={formData} setFormData={setFormData} />
         )}
-        {user.userId.institution_type === "Consultant" && (
+        {user.user_id.institution_type === "Consultant" && (
           <ConsultantSection formData={formData} setFormData={setFormData} />
         )}
         
-          {user.userId.institution_type === "Courses" && (
+          {user.user_id.institution_type === "Courses" && (
            <CourseSection formData={formData} setFormData={setFormData} />
         )}
 

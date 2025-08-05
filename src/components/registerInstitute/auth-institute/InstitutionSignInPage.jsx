@@ -80,20 +80,12 @@ const InstitutionSignInPage = () => {
 
       if (response.data?.status === "200") {
         const userData = response.data;
-
         // 🟢 Save all user info
-        localStorage.setItem("AdhyayanAuth", JSON.stringify({
-          userId: userData.id,
-          name: userData.name,
-          username: userData.username,
-          institution_type: userData.type,
-          institution_type: userData.institution_type,
-          email: userData.email,
-          profileImage: userData.profileImage || "",
+        localStorage.setItem("AdhyayanAuth", userData ? JSON.stringify(userData) : JSON.stringify({
         }));
-
+     
         dispatch(logInShowNav());
-        navigate("/dashboardnew", { replace: true });
+       navigate("/dashboardnew", { replace: true });
       } else {
         setBackendError(response.data.msg || "Invalid OTP. Please try again.");
       }

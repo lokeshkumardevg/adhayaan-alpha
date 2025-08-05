@@ -9,7 +9,7 @@ const ProfileHeaderCard = () => {
   const fileCoverRef = useRef(null);
   const storedUser = JSON.parse(localStorage.getItem("AdhyayanAuth"));
   const [user] = useState(storedUser || {
-    name: "Admin",
+    name: "Demo User",
     type: "Tutor",
     email: "admin@gmail.com",
     username: "jnicsrofficial",
@@ -17,7 +17,27 @@ const ProfileHeaderCard = () => {
   });
 
   const baseUrl = "http://localhost/admin/instituteprofile/";
-  console.log(" baseUrl + profile.cover_photo:", profile.cover_photo);
+const [isEditingUsername, setIsEditingUsername] = useState(false);
+const [newUsername, setNewUsername] = useState("");
+
+const handleUsernameSave = async () => {
+  try {
+    const res = await axios.post(
+      "http://localhost/admin/index.php/Api/update_profile_username",
+      {
+        user_id: user.user_id.id,
+        username: newUsername,
+      }
+    );
+
+    if (res.data.status === 200) {
+      setProfile((prev) => ({ ...prev, username: newUsername }));
+      setIsEditingUsername(false);
+    }
+  } catch (error) {
+    console.error("Username update failed:", error);
+  }
+};
 
   useEffect(() => {
     fetchProfile();
@@ -26,7 +46,7 @@ const ProfileHeaderCard = () => {
   const fetchProfile = async () => {
     try {
       const res = await axios.get(
-        `http://localhost/admin/index.php/Api/get_profile_header/${user.userId.id}`
+        `http://localhost/admin/index.php/Api/get_profile_header/${user.user_id.id}`
       );
       if (res.data.status === 200) setProfile(res.data.data);
     } catch (err) {
@@ -41,7 +61,7 @@ const ProfileHeaderCard = () => {
     const formData = new FormData();
     formData.append("file", file);
     formData.append("type", type);
-    formData.append("user_id", user.userId.id);
+    formData.append("user_id", user.user_id.id);
 
     try {
       const res = await axios.post(
@@ -66,32 +86,19 @@ const ProfileHeaderCard = () => {
       </div>
 
       <div className="profile-main-box">
-        {/* 🟢 Institution Logo */}
-        <div
-          className="institution-logo-left"
-          onClick={() => fileLogoRef.current.click()}
-        >
+        {/* Cover Image */}
+        <div className="cover-box" onClick={() => fileCoverRef.current.click()}>
           <img
             src={
-              profile.logo
-                ? profile.logo.startsWith("http")
-                  ? profile.logo
-                  : baseUrl + profile.logo
-                : "/institution-logo.png"
+              profile.cover_photo
+                ? profile.cover_photo.startsWith("http")
+                  ? profile.cover_photo
+                  : baseUrl + profile.cover_photo
+                : "/default-cover.jpg"
             }
-            alt="Logo"
+            alt="Cover"
+            className="cover-image"
           />
-          <input
-            type="file"
-            ref={fileLogoRef}
-            hidden
-            accept="image/*"
-            onChange={(e) => handleUpload(e, "logo")}
-          />
-        </div>
-
-        {/* 🟢 Cover Area */}
-        <div className="cover-box" onClick={() => fileCoverRef.current.click()}>
           <input
             type="file"
             ref={fileCoverRef}
@@ -100,20 +107,33 @@ const ProfileHeaderCard = () => {
             onChange={(e) => handleUpload(e, "cover_photo")}
           />
 
-          <img
-            src={
-              profile.cover_photo
-                ? profile.cover_photo.startsWith("http")
-                  ? profile.cover_photo
-                  : `http://localhost/admin/instituteprofile/${profile.cover_photo}`
-                : "/default-cover.jpg"
-            }
-            alt="Cover"
-            className="cover-image"
-          />
-
-          <div className="institution-logo-circle">
-            <FaPen className="edit-icon" />
+          {/* Logo on top of cover */}
+          <div
+            className="institution-logo-overlay"
+            onClick={(e) => {
+              e.stopPropagation();
+              fileLogoRef.current.click();
+            }}
+          >
+            <img
+              src={
+                profile.logo
+                  ? profile.logo.startsWith("http")
+                    ? profile.logo
+                    : baseUrl + profile.logo
+                  : "/institution-logo.png"
+              }
+              alt="Logo"
+              className="overlay-logo-img"
+            />
+            <FaPen className="edit-icon logo-pen" />
+            <input
+              type="file"
+              ref={fileLogoRef}
+              hidden
+              accept="image/*"
+              onChange={(e) => handleUpload(e, "logo")}
+            />
           </div>
 
           <div className="cover-text">
@@ -123,8 +143,32 @@ const ProfileHeaderCard = () => {
         </div>
 
         <div className="profile-username">
-          <strong>Username ({profile.username || "jnicsrofficial"})</strong>
+          <strong>Username:</strong>{" "}
+          {isEditingUsername ? (
+            <>
+              <input
+                type="text"
+                value={newUsername}
+                onChange={(e) => setNewUsername(e.target.value)}
+                className="username-input"
+              />
+              <button onClick={handleUsernameSave} className="save-btn">Save</button>
+              <button onClick={() => setIsEditingUsername(false)} className="cancel-btn">Cancel</button>
+            </>
+          ) : (
+            <>
+              {profile.username || "jnicsrofficial"}
+              <FaPen
+                onClick={() => {
+                  setIsEditingUsername(true);
+                  setNewUsername(profile.username || "");
+                }}
+                className="edit-icon username-pen"
+              />
+            </>
+          )}
         </div>
+
       </div>
     </div>
   );
