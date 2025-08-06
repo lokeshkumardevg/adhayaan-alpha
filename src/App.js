@@ -7,7 +7,7 @@ import Home from "./components/Home/Home";
 import PageNotFound from "./components/PageNotFOund/PageNotFound";
 import SearchPage from "./components/SearchBox/SearchPage";
 import { Toaster } from "react-hot-toast";
-
+import PrivateRouteInstitute from "./components/PrivateRouteInstitute";
 import BecomePartner from "./components/BecaomePartner/BecomePartner";
 import Faq from "./components/Faq/Faq";
 import PartnerPageFirst from "./components/PartnerPages/PartnerPageFirst";
@@ -70,7 +70,7 @@ import InstitutionLandingPage from "./components/registerInstitute/InstitutionLa
 import InstitutionAccountForm from "./components/registerInstitute/InstitutionAccountForm";
 import DashboardNew from "./components/registerInstitute/dashboard/DashboardNew";
 import InstitutionSignInPage from "./components/registerInstitute/auth-institute/InstitutionSignInPage";
-
+import ProfileView from "./components/registerInstitute/profile-section/profile-view-section/ProfileView";
 // import Carousel from "./components/Latest news/Carousel"
 // import News from "./components/Latest news/News";
 // import Free from "./components/Free";
@@ -85,6 +85,8 @@ function App() {
     e.preventDefault();
     // alert("Right click is disabled");
   };
+
+  
   return (
     <>
       <Toaster
@@ -159,9 +161,14 @@ function App() {
         {/* regoster institute */}
         <Route path="registerInstitute" element={<InstitutionLandingPage/>}></Route>
          <Route path="institutedetails" element={<InstitutionAccountForm/>}></Route>
-         <Route path="/dashboardnew" element={<DashboardNew/>}></Route>
+  
         <Route path="/login-institute" element={<InstitutionSignInPage/>}></Route>
         
+        {/* 🔒 Protected Institute Routes */}
+<Route element={<PrivateRouteInstitute />}>
+  <Route path="/dashboardnew" element={<DashboardNew />} />
+  <Route path="/profile-view" element={<ProfileView />} />
+</Route>
         
       </Routes>
     </>

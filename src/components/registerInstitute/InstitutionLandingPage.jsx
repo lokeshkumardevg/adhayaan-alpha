@@ -23,9 +23,17 @@ const InstitutionLandingPage = () => {
             <br />
             Become an incorporated institution with Aadhyayan’s expert guidance.
           </p>
+
           <button className="register-btn" onClick={() => navigate("/institutedetails")}>
             Register Now
           </button>
+
+          <p className="login-link">
+            Already registered?{" "}
+            <span onClick={() => navigate("/login-institute")}>
+              Login here
+            </span>
+          </p>
         </div>
       </div>
     </Layout>

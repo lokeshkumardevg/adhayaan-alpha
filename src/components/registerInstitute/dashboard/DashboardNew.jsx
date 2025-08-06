@@ -21,10 +21,8 @@ const DashboardNew = () => {
     type: "Tutor",
     email: "admin@gmail.com",
     username: "jnicsrofficial",
-
   });
- 
-  console.log("User data:", user);
+
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
   const navigate = useNavigate();
@@ -49,6 +47,9 @@ const DashboardNew = () => {
     localStorage.removeItem("AdhyayanAuth");
     navigate("/login-institute", { replace: true });
   };
+  const goToProfile = () => {
+    navigate("/profile-view", { replace: true }); 
+  };
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -62,25 +63,32 @@ const DashboardNew = () => {
 
   return (
     <div className="dashboard-wrapper">
+      {/* 🔹 Top Navbar */}
       <div className="top-navbar">
         <div className="logo">🎓 Aadhyayan</div>
         <div className="navbar-center-title">Institute Dashboard</div>
 
         <div className="menu-dropdown" ref={menuRef}>
           <div className="profile-avatar" onClick={() => setMenuOpen(!menuOpen)}>
-            <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="Profile" />
+            <img
+              src={user?.profileImage || "https://i.pravatar.cc/150?img=3"}
+              alt="Profile"
+            />
           </div>
 
           {menuOpen && (
             <div className="dropdown-box">
               <div className="profile-info">
-                <img src={user?.profileImage || "https://i.pravatar.cc/150?img=3"} alt="User" />
+                <img
+                  src={user?.profileImage || "https://i.pravatar.cc/150?img=3"}
+                  alt="User"
+                />
                 <div>
-                  <h4>{user.user_id.username || "Admin"}</h4>
+                  <h4>{user?.user_id?.username || "Admin"}</h4>
                   <p>{user?.email || "user@gmail.com"}</p>
                 </div>
               </div>
-              <button className="view-profile-btn">View Profile</button>
+              <button  onClick={goToProfile} className="view-profile-btn">View Profile</button>
               <div className="logout" onClick={handleLogout}>
                 <i className="fas fa-power-off"></i> Logout
               </div>
@@ -89,23 +97,29 @@ const DashboardNew = () => {
         </div>
       </div>
 
-      <ProfileHeaderCard user={{ ...user, username: user.user_id.username || "jnicsrofficial" }} />
-                
+      {/* 🔹 Profile Header */}
+      <ProfileHeaderCard
+        user={{
+          ...user,
+          username: user?.user_id?.username || "jnicsrofficial",
+        }}
+      />
+
+      {/* 🔹 Sections */}
       <div className="dashboard-sections">
         <AboutSection formData={formData} setFormData={setFormData} />
 
-       {user.user_id.institution_type === "Tutor" && (
+        {user?.user_id?.institution_type === "Tutor" && (
           <TutorSection formData={formData} setFormData={setFormData} />
         )}
-        {user.user_id.institution_type === "University" && (
+        {user?.user_id?.institution_type === "University" && (
           <UniversitySection formData={formData} setFormData={setFormData} />
         )}
-        {user.user_id.institution_type === "Consultant" && (
+        {user?.user_id?.institution_type === "Consultant" && (
           <ConsultantSection formData={formData} setFormData={setFormData} />
         )}
-        
-          {user.user_id.institution_type === "Courses" && (
-           <CourseSection formData={formData} setFormData={setFormData} />
+        {user?.user_id?.institution_type === "Courses" && (
+          <CourseSection formData={formData} setFormData={setFormData} />
         )}
 
         <SocialMediaSection formData={formData} setFormData={setFormData} />
@@ -113,8 +127,6 @@ const DashboardNew = () => {
         <AccoladeSection formData={formData} setFormData={setFormData} />
         <ManagementSection formData={formData} setFormData={setFormData} />
         <ContactSection formData={formData} setFormData={setFormData} />
-
-        <ProfileView profile={formData} />
       </div>
     </div>
   );
