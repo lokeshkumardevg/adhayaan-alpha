@@ -1,11 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import "./TutorSection.css";
+
+const MySwal = withReactContent(Swal);
+
+// API constants
+const API_BASE = "http://localhost/admin/index.php/Api";
+const GET_TUTOR_URL = `${API_BASE}/get_tutor_data`;
+const SAVE_TUTOR_URL = `${API_BASE}/save_tutor_data`;
 
 const TutorSection = ({ formData, setFormData }) => {
   const userId = localStorage.getItem("userId");
-  const apiBase = "http://localhost:8081/admin/index.php/Api";
-  const [message, setMessage] = useState("");
 
   const studyModes = ["Student House", "Tutor House", "Online"];
 
@@ -37,22 +44,37 @@ const TutorSection = ({ formData, setFormData }) => {
   const handleSave = async () => {
     try {
       const payload = { user_id: 1, ...formData };
-      const res = await axios.post(`${apiBase}/save_tutor_data`, payload);
+      const res = await axios.post(SAVE_TUTOR_URL, payload);
+
       if (res.data.status === "200") {
-        setMessage("✅ Tutor data saved successfully.");
+        MySwal.fire({
+          icon: "success",
+          title: "Tutor Data Saved 🎉",
+          text: "Your tutor profile details have been updated successfully.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       } else {
-        setMessage("❌ Failed to save data.");
+        MySwal.fire({
+          icon: "error",
+          title: "Save Failed ❌",
+          text: res.data.msg || "Could not save tutor details.",
+        });
       }
     } catch (err) {
       console.error("Save error:", err);
-      setMessage("❌ Server error while saving.");
+      MySwal.fire({
+        icon: "error",
+        title: "Server Error 🚨",
+        text: "Something went wrong while saving. Please try again later.",
+      });
     }
   };
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${apiBase}/get_tutor_data`, {
+        const res = await axios.get(GET_TUTOR_URL, {
           params: { user_id: 1 },
         });
         if (res.data.status === "200") {
@@ -68,8 +90,12 @@ const TutorSection = ({ formData, setFormData }) => {
 
   return (
     <div className="tutor-section">
-       <div className="navbar">
-        {["About", "University", "Collage", "ITI/Vocational", "Courses", "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos", "Accolades", "Management", "Contact"].map((tab) => (
+      <div className="navbar">
+        {[
+          "About", "University", "Collage", "ITI/Vocational", "Courses",
+          "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos",
+          "Accolades", "Management", "Contact"
+        ].map((tab) => (
           <span key={tab} className={tab === "Tutor" ? "tab active" : "tab"}>
             {tab}
           </span>
@@ -212,8 +238,6 @@ const TutorSection = ({ formData, setFormData }) => {
           onChange={handleChange}
         />
       </div>
-
-      {message && <p className="success-message">{message}</p>}
 
       <div className="btns">
         <button className="save-btn" onClick={handleSave}>

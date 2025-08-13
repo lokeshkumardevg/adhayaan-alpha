@@ -64,3 +64,16 @@
 .cancel-btn {
   background: #555;
 }
+.three-column-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.three-column-grid label {
+  font-weight: 500;
+}
+
+.text-input {
+  width: 100%;
+}

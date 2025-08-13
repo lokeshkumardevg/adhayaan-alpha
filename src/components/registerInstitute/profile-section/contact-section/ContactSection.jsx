@@ -1,11 +1,20 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import "./ContactSection.css";
+
+const MySwal = withReactContent(Swal);
+
+// API constants
+const API_BASE = "http://localhost/admin/index.php/Api";
+const GET_CONTACT_URL = `${API_BASE}/get_contact_section`;
+const SAVE_CONTACT_URL = `${API_BASE}/save_contact_section`;
 
 const ContactSection = () => {
   const userdat = JSON.parse(localStorage.getItem("AdhyayanAuth"));
   const [contact, setContact] = useState({
-    user_id:userdat.user_id.id,
+    user_id: userdat.user_id.id,
     address: "",
     country: "",
     city: "",
@@ -17,54 +26,56 @@ const ContactSection = () => {
     email: "",
   });
 
-  const [records, setRecords] = useState([]); // For table view
-
   useEffect(() => {
     fetchContact();
-    fetchAllRecords();
   }, []);
 
+  // Fetch saved contact details
   const fetchContact = async () => {
     try {
-      const res = await axios.get("http://localhost/admin/index.php/Api/save_contact_section"); // 🔁 adjust endpoint
-      if (res.data) {
-        setContact(res.data);
+      const res = await axios.get(`${GET_CONTACT_URL}?user_id=${contact.user_id}`);
+      if (res.data.status === "200" && res.data.data) {
+        setContact((prev) => ({ ...prev, ...res.data.data }));
       }
     } catch (err) {
       console.error("Failed to load contact data", err);
     }
   };
 
-  const fetchAllRecords = async () => {
-    try {
-      const res = await axios.get("http://localhost/admin/index.php/Api/save_contact_section"); // 🔁 adjust endpoint
-      if (res.data) {
-        setRecords(res.data);
-      }
-    } catch (err) {
-      console.error("Failed to load records", err);
-    }
-  };
-
+  // Handle input changes
   const handleChange = (e) => {
     setContact({ ...contact, [e.target.name]: e.target.value });
   };
 
-  
+  // Save contact info
   const handleSave = async () => {
     try {
-    const res=  await axios.post("http://localhost/admin/index.php/Api/save_contact_section", contact);
+      const res = await axios.post(SAVE_CONTACT_URL, contact);
 
       if (res.data.status === "200") {
-        alert("Saved successfully");
-  
+        MySwal.fire({
+          icon: "success",
+          title: "Saved Successfully 🎉",
+          text: "Contact details have been updated.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+      } else {
+        MySwal.fire({
+          icon: "error",
+          title: "Save Failed ❌",
+          text: res.data.msg || "Could not save contact details.",
+        });
       }
     } catch (err) {
       console.error("Save error:", err);
-      
+      MySwal.fire({
+        icon: "error",
+        title: "Server Error 🚨",
+        text: "Something went wrong. Please try again later.",
+      });
     }
   };
-
 
   return (
     <div className="section-wrapper contact-form-wrapper">
@@ -101,38 +112,13 @@ const ContactSection = () => {
 
       <div className="button-group">
         <button className="save-btn" onClick={handleSave}>Save</button>
-        <button className="cancel-btn" onClick={() => fetchContact()}>Cancel</button>
+        <button className="cancel-btn" onClick={fetchContact}>Cancel</button>
       </div>
 
       <div className="image-preview">
         <img src="/contact1.png" alt="Preview 1" />
         <img src="/contact2.png" alt="Preview 2" />
         <img src="/contact3.png" alt="Preview 3" />
-      </div>
-
-      {/* Display all records in a table */}
-      <div className="record-table">
-        <h4>Contact Records</h4>
-        <table>
-          <thead>
-            <tr>
-              <th>Address</th>
-              <th>City</th>
-              <th>Phone</th>
-              <th>Email</th>
-            </tr>
-          </thead>
-          <tbody>
-            {records.map((r, i) => (
-              <tr key={i}>
-                <td>{r.address}</td>
-                <td>{r.city}</td>
-                <td>{r.phone}</td>
-                <td>{r.email}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
       </div>
     </div>
   );

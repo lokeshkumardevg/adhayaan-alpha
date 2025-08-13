@@ -1,14 +1,96 @@
 // src/profile-section/college-section/CollegeSection.jsx
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import Swal from "sweetalert2";
 import "./CollegeSection.css";
 
+// API URL constants
+const API_BASE = "http://localhost/admin/index.php/Api";
+const GET_COLLEGE_URL = `${API_BASE}/get_college_data`;
+const SAVE_COLLEGE_URL = `${API_BASE}/save_college_data`;
+const GET_COLLEGE_LIST_URL = `${API_BASE}/get_all_colleges`;
+
 const CollegeSection = ({ formData, setFormData }) => {
+  const userId = 1; // You can replace with dynamic localStorage user id
+  const [collegeList, setCollegeList] = useState([]);
+
+  // API functions
+  const fetchCollegeData = async () => {
+    try {
+      const res = await axios.get(GET_COLLEGE_URL, { params: { user_id: userId } });
+      if (res.data.status === "200") {
+        setFormData(res.data.data || {});
+      }
+    } catch (err) {
+      console.error("Fetch college error:", err);
+    }
+  };
+
+  const saveCollegeData = async () => {
+    try {
+      const payload = { user_id: userId, ...formData };
+      const res = await axios.post(SAVE_COLLEGE_URL, payload);
+
+      if (res.data.status === "200") {
+        Swal.fire({
+          icon: "success",
+          title: "Saved!",
+          text: res.data.msg || "College data saved successfully",
+          timer: 2000,
+          showConfirmButton: false
+        });
+        loadCollegeList();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Failed",
+          text: res.data.msg || "Unable to save college data"
+        });
+      }
+    } catch (err) {
+      console.error("Save college error:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Server error while saving"
+      });
+    }
+  };
+
+  const loadCollegeList = async () => {
+    try {
+      const res = await axios.get(GET_COLLEGE_LIST_URL);
+      if (res.data.status === "200") {
+        setCollegeList(res.data.data || []);
+      }
+    } catch (err) {
+      console.error("Fetch list error:", err);
+    }
+  };
+
+  useEffect(() => {
+    fetchCollegeData();
+    loadCollegeList();
+  }, []);
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   return (
     <div className="college-section">
+      <div className="navbar">
+        {[
+          "About", "University", "Collage", "ITI/Vocational", "Courses",
+          "Coaching Center", "Tutor", "Consultants", "Social Media",
+          "Photos", "Accolades", "Management", "Contact"
+        ].map((tab) => (
+          <span key={tab} className={tab === "Collage" ? "tab active" : "tab"}>
+            {tab}
+          </span>
+        ))}
+      </div>
+
       <div className="section-heading">College</div>
 
       <label>Ownership:</label>
@@ -24,15 +106,6 @@ const CollegeSection = ({ formData, setFormData }) => {
             />
             {type}
           </label>
-        ))}
-      </div>
-
-      <label>Ownership type:</label>
-      <div className="ownership-types">
-        {["2(f)", "2(f) and 12(b)", "Autonomous"].map((type) => (
-          <span key={type} className="ownership-type-item">
-            {type}
-          </span>
         ))}
       </div>
 
@@ -55,9 +128,37 @@ const CollegeSection = ({ formData, setFormData }) => {
       />
 
       <div className="form-buttons">
-        <button className="save-btn">Save</button>
-        <button className="cancel-btn">Cancel</button>
+        <button className="save-btn" onClick={saveCollegeData}>
+          Save
+        </button>
+        <button className="cancel-btn" onClick={fetchCollegeData}>
+          Cancel
+        </button>
       </div>
+
+      {collegeList.length > 0 && (
+        <div className="college-table">
+          <h4>Saved Colleges</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Ownership</th>
+                <th>Teaching Staff</th>
+                <th>Non-Teaching Staff</th>
+              </tr>
+            </thead>
+            <tbody>
+              {collegeList.map((college, idx) => (
+                <tr key={idx}>
+                  <td>{college.collegeOwnership}</td>
+                  <td>{college.collegeTeachingStaff}</td>
+                  <td>{college.collegeNonTeachingStaff}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

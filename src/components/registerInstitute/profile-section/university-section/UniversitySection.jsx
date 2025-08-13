@@ -1,30 +1,50 @@
 // src/profile-section/university-section/UniversitySection.jsx
 import React from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import "./UniversitySection.css";
 
-const UniversitySection = ({ formData, setFormData }) => {
+const MySwal = withReactContent(Swal);
 
+const API_URL = "http://localhost/admin/index.php/Api/save_university_section";
+
+const UniversitySection = ({ formData, setFormData }) => {
   const userdat = JSON.parse(localStorage.getItem("AdhyayanAuth"));
-  
+
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-  formData.user_id = userdat.user_id.id;
+
+  // Attach user_id
+  formData.user_id = userdat?.user_id?.id || "";
+
   const handleSave = async () => {
     try {
-      const res = await axios.post(
-        "http://localhost/admin/index.php/Api/save_university_section",
-        formData
-      );
+      const res = await axios.post(API_URL, formData);
 
       if (res.data.status === 200) {
-        alert("University Section Saved Successfully!");
+        MySwal.fire({
+          icon: "success",
+          title: "Saved Successfully 🎉",
+          text: "University section has been updated.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       } else {
-        alert("Failed to save.");
+        MySwal.fire({
+          icon: "error",
+          title: "Save Failed ❌",
+          text: "Could not save data. Please try again.",
+        });
       }
     } catch (err) {
       console.error("Save Error:", err);
+      MySwal.fire({
+        icon: "error",
+        title: "Server Error 🚨",
+        text: "Something went wrong. Please try again later.",
+      });
     }
   };
 
@@ -83,38 +103,46 @@ const UniversitySection = ({ formData, setFormData }) => {
         <option value="Deemed University">Deemed University</option>
       </select>
 
-      <label>Total no of approved colleges:</label>
-      <input
-        type="text"
-        name="approvedColleges"
-        value={formData.approvedColleges || ""}
-        onChange={handleChange}
-        className="text-input"
-      />
+      <div className="three-column-grid">
+        <div>
+          <label>Total no of approved colleges:</label>
+          <input
+            type="number"
+            name="approvedColleges"
+            value={formData.approvedColleges || ""}
+            onChange={handleChange}
+            className="text-input"
+          />
+        </div>
+
+        <div>
+          <label>Total no of teaching staff:</label>
+          <input
+            type="number"
+            name="teachingStaff"
+            value={formData.teachingStaff || ""}
+            onChange={handleChange}
+            className="text-input"
+          />
+        </div>
+
+        <div>
+          <label>Total no of non teaching staff:</label>
+          <input
+            type="number"
+            name="nonTeachingStaff"
+            value={formData.nonTeachingStaff || ""}
+            onChange={handleChange}
+            className="text-input"
+          />
+        </div>
+      </div>
 
       <label>Name of approved institution:</label>
       <input
         type="text"
         name="approvedInstitution"
         value={formData.approvedInstitution || ""}
-        onChange={handleChange}
-        className="text-input"
-      />
-
-      <label>Total no of teaching staff:</label>
-      <input
-        type="text"
-        name="teachingStaff"
-        value={formData.teachingStaff || ""}
-        onChange={handleChange}
-        className="text-input"
-      />
-
-      <label>Total no of non teaching staff:</label>
-      <input
-        type="text"
-        name="nonTeachingStaff"
-        value={formData.nonTeachingStaff || ""}
         onChange={handleChange}
         className="text-input"
       />

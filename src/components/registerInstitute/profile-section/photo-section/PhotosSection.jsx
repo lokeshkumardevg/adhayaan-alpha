@@ -1,10 +1,16 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import "./PhotosSection.css";
+
+const MySwal = withReactContent(Swal);
+
+const API_BASE = "http://localhost/admin/index.php/Api";
+const UPLOAD_PHOTOS_URL = `${API_BASE}/upload_photos`;
 
 const PhotosSection = ({ userId }) => {
   const [files, setFiles] = useState([]);
-  const [msg, setMsg] = useState("");
   const [uploadedPaths, setUploadedPaths] = useState([]);
 
   const handleFileChange = (e) => {
@@ -12,33 +18,54 @@ const PhotosSection = ({ userId }) => {
   };
 
   const handleUpload = async () => {
-    if (!files.length) return alert("Please select photos first");
+    if (!files.length) {
+      MySwal.fire({
+        icon: "warning",
+        title: "No Files Selected",
+        text: "Please select photos before uploading.",
+        timer: 2000,
+        showConfirmButton: false
+      });
+      return;
+    }
 
     const formData = new FormData();
     files.forEach((file) => formData.append("photos[]", file));
-    formData.append("user_id", 1);
+    formData.append("user_id", userId || 1);
 
     try {
-      const res = await axios.post("http://localhost:8081/admin/index.php/Api/upload_photos", formData, {
+      const res = await axios.post(UPLOAD_PHOTOS_URL, formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },
       });
 
       if (res.data.status === "200") {
-        setMsg("Uploaded successfully!");
-
         setUploadedPaths(res.data.files || []);
-        setTimeout(() => setMsg(""), 3000);
+        MySwal.fire({
+          icon: "success",
+          title: "Uploaded Successfully 🎉",
+          text: "Your photos have been uploaded.",
+          timer: 2000,
+          showConfirmButton: false
+        });
       } else {
-        alert(res.data.msg);
+        MySwal.fire({
+          icon: "error",
+          title: "Upload Failed ❌",
+          text: res.data.msg || "Something went wrong."
+        });
       }
     } catch (error) {
       console.error("Upload error", error);
-      alert("Upload failed!");
+      MySwal.fire({
+        icon: "error",
+        title: "Server Error 🚨",
+        text: "Upload failed! Please try again later."
+      });
     }
   };
-  console.log("Uploaded paths:", uploadedPaths);  
+
   return (
     <div className="photos-container">
       <div className="navbar">
@@ -76,11 +103,15 @@ const PhotosSection = ({ userId }) => {
 
         <p className="file-note">Drop .JPG, .PNG, .JPEG images here</p>
 
-        {msg && <p className="success-msg">{msg}</p>}
-
         <div className="uploaded-images">
           {uploadedPaths.map((path, idx) => (
-            <img key={idx} src={path} alt={`uploaded-${idx}`} width="120" style={{ margin: "10px" }} />
+            <img
+              key={idx}
+              src={path}
+              alt={`uploaded-${idx}`}
+              width="120"
+              style={{ margin: "10px" }}
+            />
           ))}
         </div>
 

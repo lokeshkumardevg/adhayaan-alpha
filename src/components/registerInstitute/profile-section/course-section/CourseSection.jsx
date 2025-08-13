@@ -1,8 +1,15 @@
+// src/profile-section/course-section/CourseSection.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
 import "./CourseSection.css";
 
-const CourseSection = ({ userId }) => {
+// ✅ API URL constants
+const API_BASE = "http://localhost/admin/index.php/Api";
+const GET_COURSES_URL = `${API_BASE}/get_courses`;
+const SAVE_COURSES_URL = `${API_BASE}/save_courses`;
+
+const CourseSection = ({ userId = 1 }) => {
   const [formData, setFormData] = useState({
     streams: [],
     total_courses: "",
@@ -19,19 +26,59 @@ const CourseSection = ({ userId }) => {
     eligibility: "",
   });
 
-  const streamOptions = [ /* same array as above */ ];
+  const [courseList, setCourseList] = useState([]);
 
+  // Example streams (replace with your actual)
+  const streamOptions = [
+    "Engineering", "Management", "Medical", "Arts", "Science", "Commerce"
+  ];
+
+  // ✅ Fetch existing data
   const fetchData = async () => {
-    const res = await axios.get(
-      `http://localhost:8081/admin/index.php/Api/get_courses/${userId}`
-    );
-    if (res.data.status === 200) setFormData(res.data.data);
+    try {
+      const res = await axios.get(`${GET_COURSES_URL}/${userId}`);
+      if (res.data.status === 200) {
+        setFormData(res.data.data || {});
+        setCourseList(res.data.data?.courses || []);
+      }
+    } catch (err) {
+      console.error("Error fetching courses:", err);
+    }
   };
 
-  useEffect(() => {
-    fetchData();
-  }, []);
+  // ✅ Save data
+  const handleSave = async () => {
+    try {
+      const payload = { ...formData, user_id: userId };
+      const res = await axios.post(SAVE_COURSES_URL, payload);
 
+      if (res.data.status === "200") {
+        Swal.fire({
+          icon: "success",
+          title: "Saved!",
+          text: res.data.msg || "Courses saved successfully",
+          timer: 2000,
+          showConfirmButton: false,
+        });
+        fetchData();
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Failed",
+          text: res.data.msg || "Unable to save courses",
+        });
+      }
+    } catch (err) {
+      console.error("Save error:", err);
+      Swal.fire({
+        icon: "error",
+        title: "Error",
+        text: "Server error while saving",
+      });
+    }
+  };
+
+  // ✅ Stream toggle
   const handleStreamToggle = (stream) => {
     const updated = formData.streams.includes(stream)
       ? formData.streams.filter((s) => s !== stream)
@@ -39,37 +86,40 @@ const CourseSection = ({ userId }) => {
     setFormData((prev) => ({ ...prev, streams: updated }));
   };
 
+  // ✅ Add course to list
   const handleAddCourse = () => {
     if (course.name.trim()) {
-      setFormData((prev) => ({
-        ...prev,
-        courses: [...prev.courses, course],
-      }));
+      const updatedCourses = [...formData.courses, course];
+      setFormData((prev) => ({ ...prev, courses: updatedCourses }));
       setCourse({ name: "", duration: "", mode: "", eligibility: "" });
+    } else {
+      Swal.fire({
+        icon: "warning",
+        title: "Course Name Required",
+        text: "Please enter a course name before adding.",
+      });
     }
   };
 
-  const handleSave = async () => {
-    const payload = {
-      ...formData,
-      user_id: 1,
-    };
-    const res = await axios.post(
-      "http://localhost:8081/admin/index.php/Api/save_courses",
-      payload
-    );
-    alert(res.data.msg);
-  };
+  useEffect(() => {
+    fetchData();
+  }, []);
 
   return (
     <div className="course-section">
+      {/* Navbar */}
       <div className="navbar">
-        {["About", "University", "Collage", "ITI/Vocational", "Courses", "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos", "Accolades", "Management", "Contact"].map((tab) => (
+        {[
+          "About", "University", "Collage", "ITI/Vocational", "Courses",
+          "Coaching Center", "Tutor", "Consultants", "Social Media",
+          "Photos", "Accolades", "Management", "Contact"
+        ].map((tab) => (
           <span key={tab} className={tab === "Courses" ? "tab active" : "tab"}>
             {tab}
           </span>
         ))}
       </div>
+
       <div className="section-header">
         <h3>Courses :</h3>
         <label>Streams :</label>
@@ -87,6 +137,7 @@ const CourseSection = ({ userId }) => {
         </div>
       </div>
 
+      {/* Totals */}
       <div className="totals">
         <label>Total no of courses :</label>
         <input
@@ -122,8 +173,8 @@ const CourseSection = ({ userId }) => {
         />
       </div>
 
+      {/* Add Course */}
       <h4>Add your courses <span>(Degree / Diploma / Certificate):</span></h4>
-
       <div className="course-inputs">
         <div className="course-name-row">
           <label>Course Name :</label>
@@ -166,16 +217,45 @@ const CourseSection = ({ userId }) => {
         </button>
       </div>
 
+      {/* Added Courses Chips */}
       <div className="course-chips">
         {formData.courses.map((item, i) => (
           <div className="chip" key={i}>{item.name.toUpperCase()}</div>
         ))}
       </div>
 
+      {/* Action Buttons */}
       <div className="action-buttons">
         <button className="save-btn" onClick={handleSave}>Save</button>
         <button className="cancel-btn" onClick={fetchData}>Cancel</button>
       </div>
+
+      {/* Optional Table */}
+      {courseList.length > 0 && (
+        <div className="course-table">
+          <h4>Saved Courses</h4>
+          <table>
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Duration</th>
+                <th>Mode</th>
+                <th>Eligibility</th>
+              </tr>
+            </thead>
+            <tbody>
+              {courseList.map((c, idx) => (
+                <tr key={idx}>
+                  <td>{c.name}</td>
+                  <td>{c.duration}</td>
+                  <td>{c.mode}</td>
+                  <td>{c.eligibility}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
     </div>
   );
 };

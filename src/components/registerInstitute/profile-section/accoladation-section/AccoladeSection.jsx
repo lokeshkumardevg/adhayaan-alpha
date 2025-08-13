@@ -1,6 +1,15 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import "./AccoladeSection.css";
+
+const MySwal = withReactContent(Swal);
+
+// API base and endpoints
+const API_BASE = "http://localhost/admin/index.php/Api";
+const GET_ACCOLADES_URL = `${API_BASE}/get_accolades`;
+const SAVE_ACCOLADES_URL = `${API_BASE}/save_accolades`;
 
 const defaultAccolades = [
   "UGC", "AICTE", "AIU MemberShip", "Institute of National Importance",
@@ -11,17 +20,21 @@ const defaultAccolades = [
 const AccoladesSection = ({ userId }) => {
   const [accolades, setAccolades] = useState([]);
   const [others, setOthers] = useState("");
-  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8081/admin/index.php/Api/get_accolades?user_id=${1}`);
+        const res = await axios.get(`${GET_ACCOLADES_URL}?user_id=${userId || 1}`);
         if (res.data.status === "200") {
           setAccolades(res.data.data.accolades || []);
         }
       } catch (err) {
         console.error("Fetch accolades error:", err);
+        MySwal.fire({
+          icon: "error",
+          title: "Error",
+          text: "Failed to load accolades."
+        });
       }
     };
     fetchData();
@@ -44,18 +57,33 @@ const AccoladesSection = ({ userId }) => {
 
   const handleSave = async () => {
     try {
-      const res = await axios.post("http://localhost:8081/admin/index.php/Api/save_accolades", {
-        user_id: 1,
+      const res = await axios.post(SAVE_ACCOLADES_URL, {
+        user_id: userId || 1,
         accolades
       });
 
       if (res.data.status === "200") {
-        setMsg("Saved successfully!");
-        setTimeout(() => setMsg(""), 3000);
+        MySwal.fire({
+          icon: "success",
+          title: "Saved Successfully 🎉",
+          text: "Accolades have been updated.",
+          timer: 2000,
+          showConfirmButton: false
+        });
+      } else {
+        MySwal.fire({
+          icon: "error",
+          title: "Save Failed ❌",
+          text: res.data.msg || "Could not save accolades."
+        });
       }
     } catch (err) {
       console.error("Save error:", err);
-      setMsg("Save failed.");
+      MySwal.fire({
+        icon: "error",
+        title: "Server Error 🚨",
+        text: "Something went wrong. Please try again later."
+      });
     }
   };
 
@@ -115,8 +143,6 @@ const AccoladesSection = ({ userId }) => {
           <button className="save-btn" onClick={handleSave}>Save</button>
           <button className="cancel-btn" onClick={() => window.location.reload()}>Cancel</button>
         </div>
-
-        {msg && <p className="success-msg">{msg}</p>}
       </div>
     </div>
   );

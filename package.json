@@ -61,6 +61,8 @@
     "react-spinners": "^0.13.8",
     "react-tooltip": "^5.26.4",
     "rsuite": "^5.66.0",
+    "sweetalert2": "^11.22.3",
+    "sweetalert2-react-content": "^5.1.0",
     "swiper": "^11.1.1",
     "web-vitals": "^2.1.4"
   },

@@ -1,8 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./AboutSection.css";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
+
+const MySwal = withReactContent(Swal);
 
 const AboutSection = ({ formData, setFormData }) => {
+  const [loading, setLoading] = useState(false);
+
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -23,9 +29,10 @@ const AboutSection = ({ formData, setFormData }) => {
   };
 
   const handleSave = async () => {
+    setLoading(true);
     try {
       const response = await axios.post(
-        "http://localhost:8081/admin/index.php/Api/save_about_section",
+        "http://localhost/admin/index.php/Api/save_about_section",
         {
           institution_id: localStorage.getItem("userId"),
           about: formData.about,
@@ -41,14 +48,44 @@ const AboutSection = ({ formData, setFormData }) => {
       );
 
       if (response.data.status === "200") {
-        alert("✅ About section saved successfully!");
+        MySwal.fire({
+          icon: "success",
+          title: "Saved Successfully 🎉",
+          text: "About section has been updated.",
+          timer: 2000,
+          showConfirmButton: false,
+        });
       } else {
-        alert("❌ Failed to save about section!");
+        MySwal.fire({
+          icon: "error",
+          title: "Save Failed ❌",
+          text: "Could not save about section. Please try again.",
+        });
       }
     } catch (error) {
       console.error("Save Error:", error);
-      alert("🚨 Server error. Please try again.");
+      MySwal.fire({
+        icon: "error",
+        title: "Server Error 🚨",
+        text: "Something went wrong. Please try again later.",
+      });
     }
+    setLoading(false);
+  };
+
+  const handleCancel = () => {
+    MySwal.fire({
+      title: "Discard changes?",
+      text: "Any unsaved changes will be lost.",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, discard",
+      cancelButtonText: "No, keep editing",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        setFormData({});
+      }
+    });
   };
 
   return (
@@ -79,13 +116,13 @@ const AboutSection = ({ formData, setFormData }) => {
           "Accolades",
           "Management",
           "Contact",
-        ].map((tab, idx) => (
-         <span key={tab} className={tab === "About" ? "tab active" : "tab"}>
+        ].map((tab) => (
+          <span key={tab} className={tab === "About" ? "tab active" : "tab"}>
             {tab}
           </span>
         ))}
       </div>
-     
+
       <div className="about-form">
         <label>About Institution / Tutor / Consultant:</label>
         <textarea
@@ -97,21 +134,30 @@ const AboutSection = ({ formData, setFormData }) => {
 
         <label>Year of Establishment:</label>
         <input
-          type="text"
+          type="number"
           name="year"
+          placeholder="e.g. 2005"
+          min="1900"
+          max={new Date().getFullYear()}
           value={formData.year || ""}
           onChange={handleChange}
           className="text-input"
         />
 
         <label>Institution Type:</label>
-        <input
-          type="text"
+        <select
           name="institutionType"
           value={formData.institutionType || ""}
           onChange={handleChange}
           className="text-input"
-        />
+        >
+          <option value="">Select Type</option>
+          <option value="College">College</option>
+          <option value="University">University</option>
+          <option value="Tutor">Tutor</option>
+          <option value="Consultant">Consultant</option>
+          <option value="Coaching Center">Coaching Center</option>
+        </select>
 
         <label>Study Mode:</label>
         <div className="checkbox-group">
@@ -128,10 +174,22 @@ const AboutSection = ({ formData, setFormData }) => {
         </div>
 
         <div className="form-buttons">
-          <button type="button" className="save-btn" onClick={handleSave}>
-            Save
+          <button
+            type="button"
+            className="save-btn"
+            onClick={handleSave}
+            disabled={loading}
+          >
+            {loading ? "Saving..." : "Save"}
           </button>
-          <button className="cancel-btn">Cancel</button>
+          <button
+            type="button"
+            className="cancel-btn"
+            onClick={handleCancel}
+            disabled={loading}
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>

@@ -1,6 +1,14 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 import "./SocialMediaSection.css";
+
+const MySwal = withReactContent(Swal);
+
+const API_BASE = "http://localhost/admin/index.php/Api";
+const GET_SOCIAL_MEDIA_URL = `${API_BASE}/get_social_media`;
+const SAVE_SOCIAL_MEDIA_URL = `${API_BASE}/save_social_media`;
 
 const SocialMediaSection = ({ userId }) => {
   const [formData, setFormData] = useState({
@@ -10,12 +18,11 @@ const SocialMediaSection = ({ userId }) => {
     twitter: "",
     youtube: ""
   });
-  const [msg, setMsg] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`http://localhost:8081/admin/index.php/Api/get_social_media?user_id=${1}`);
+        const res = await axios.get(`${GET_SOCIAL_MEDIA_URL}?user_id=${userId || 1}`);
         if (res.data.status === "200") {
           setFormData(res.data.data);
         }
@@ -36,25 +43,54 @@ const SocialMediaSection = ({ userId }) => {
 
   const handleSave = async () => {
     try {
-      const res = await axios.post("http://localhost:8081/admin/index.php/Api/save_social_media", {
+      const res = await axios.post(SAVE_SOCIAL_MEDIA_URL, {
         ...formData,
-        user_id: 1
+        user_id: userId || 1
       });
 
       if (res.data.status === "200") {
-        setMsg("Saved successfully!");
-        setTimeout(() => setMsg(""), 3000);
+        MySwal.fire({
+          icon: "success",
+          title: "Saved Successfully 🎉",
+          text: "Social media links have been updated.",
+          timer: 2000,
+          showConfirmButton: false
+        });
+      } else {
+        MySwal.fire({
+          icon: "error",
+          title: "Save Failed ❌",
+          text: "Could not save social media links."
+        });
       }
     } catch (err) {
       console.error("Save failed:", err);
-      setMsg("Something went wrong.");
+      MySwal.fire({
+        icon: "error",
+        title: "Server Error 🚨",
+        text: "Something went wrong. Please try again later."
+      });
     }
   };
 
   return (
     <div className="social-media-container">
       <div className="navbar">
-        {["About", "University", "Collage", "ITI/Vocational", "Courses", "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos", "Accolades", "Management", "Contact"].map((tab) => (
+        {[
+          "About",
+          "University",
+          "Collage",
+          "ITI/Vocational",
+          "Courses",
+          "Coaching Center",
+          "Tutor",
+          "Consultants",
+          "Social Media",
+          "Photos",
+          "Accolades",
+          "Management",
+          "Contact"
+        ].map((tab) => (
           <span key={tab} className={tab === "Social Media" ? "tab active" : "tab"}>
             {tab}
           </span>
@@ -93,8 +129,6 @@ const SocialMediaSection = ({ userId }) => {
           <button className="save-btn" onClick={handleSave}>Save</button>
           <button className="cancel-btn" onClick={() => window.location.reload()}>Cancel</button>
         </div>
-
-        {msg && <p className="success-msg">{msg}</p>}
       </div>
     </div>
   );
