@@ -1,8 +1,8 @@
 /* src/profile-section/iti-section/ITISection.css */
 .iti-section {
-  padding: 20px;
-  background-color: #fff;
+   padding: 20px;
   border: 1px solid #ccc;
+  background: #fff;
 }
 
 .section-heading {

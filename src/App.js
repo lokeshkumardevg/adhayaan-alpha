@@ -71,6 +71,7 @@ import InstitutionAccountForm from "./components/registerInstitute/InstitutionAc
 import DashboardNew from "./components/registerInstitute/dashboard/DashboardNew";
 import InstitutionSignInPage from "./components/registerInstitute/auth-institute/InstitutionSignInPage";
 import ProfileView from "./components/registerInstitute/profile-section/profile-view-section/ProfileView";
+import TutorProfileView from "./components/registerInstitute/profile-section/profile-view-section/TutorProfileView";
 // import Carousel from "./components/Latest news/Carousel"
 // import News from "./components/Latest news/News";
 // import Free from "./components/Free";
@@ -163,7 +164,7 @@ function App() {
          <Route path="institutedetails" element={<InstitutionAccountForm/>}></Route>
   
         <Route path="/login-institute" element={<InstitutionSignInPage/>}></Route>
-        
+        <Route path="/tutorProfileView" element={<TutorProfileView/>}></Route>
         {/* 🔒 Protected Institute Routes */}
 <Route element={<PrivateRouteInstitute />}>
   <Route path="/dashboardnew" element={<DashboardNew />} />

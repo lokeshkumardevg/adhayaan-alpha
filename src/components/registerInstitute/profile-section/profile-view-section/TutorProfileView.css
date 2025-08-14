@@ -1,0 +1,71 @@
+.tutor-container {
+  max-width: 1000px;
+  margin: auto;
+  background: #fff;
+  padding: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.profile-header {
+  text-align: center;
+  position: relative;
+  margin-bottom: 80px;
+}
+
+.cover-img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.profile-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  border: 3px solid #fff;
+  position: absolute;
+  bottom: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.name-section {
+  margin-top: 70px;
+}
+
+.profile-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.profile-table td {
+  padding: 8px 10px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+.section-heading {
+  background: #f0f0f0;
+  font-weight: bold;
+}
+
+.subject-row {
+  display: flex;
+  justify-content: space-between;
+  background: #e9e9e9;
+  padding: 8px;
+  margin-bottom: 5px;
+}
+
+.icon {
+  cursor: pointer;
+  margin-left: 8px;
+}
+
+.icon.edit {
+  color: green;
+}
+
+.icon.delete {
+  color: red;
+}

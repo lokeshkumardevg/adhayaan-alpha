@@ -12,6 +12,7 @@ import ContactSection from "../profile-section/contact-section/ContactSection";
 import ProfileView from "../profile-section/profile-view-section/ProfileView";
 import ProfileHeaderCard from "../profile-section/dashboard-header/ProfileHeaderCard";
 import CollegeSection from "../profile-section/college-section/CollegeSection";
+import ITISection from "../profile-section/iti-section/ITISection";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
@@ -124,6 +125,9 @@ const DashboardNew = () => {
         )}
         {user?.user_id?.institution_type === "College" && (
           <CollegeSection formData={formData} setFormData={setFormData} />
+        )}
+          {user?.user_id?.institution_type === "ITI / Vocational" && (
+          <ITISection formData={formData} setFormData={setFormData} />
         )}
         <SocialMediaSection formData={formData} setFormData={setFormData} />
         <PhotosSection formData={formData} setFormData={setFormData} />

@@ -60,6 +60,17 @@ const ITISection = ({ formData, setFormData }) => {
 
   return (
     <div className="iti-section">
+       <div className="navbar">
+        {[
+          "About", "University", "Collage", "ITI/Vocational", "Courses",
+          "Coaching Center", "Tutor", "Consultants", "Social Media",
+          "Photos", "Accolades", "Management", "Contact"
+        ].map((tab) => (
+          <span key={tab} className={tab === "ITI/Vocational" ? "tab active" : "tab"}>
+            {tab}
+          </span>
+        ))}
+      </div>
       <div className="section-heading">ITI/Vocational</div>
 
       <label>Ownership:</label>
