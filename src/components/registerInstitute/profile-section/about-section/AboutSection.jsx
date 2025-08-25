@@ -8,7 +8,7 @@ const MySwal = withReactContent(Swal);
 
 const AboutSection = ({ formData, setFormData }) => {
   const [loading, setLoading] = useState(false);
-
+      const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -34,7 +34,7 @@ const AboutSection = ({ formData, setFormData }) => {
       const response = await axios.post(
         "http://localhost/admin/index.php/Api/save_about_section",
         {
-          institution_id: localStorage.getItem("userId"),
+          institution_id: userId,
           about: formData.about,
           year: formData.year,
           institutionType: formData.institutionType,
@@ -104,18 +104,7 @@ const AboutSection = ({ formData, setFormData }) => {
       <div className="about-tabs">
         {[
           "About",
-          "University",
-          "Collage",
-          "ITI/Vocational",
-          "Courses",
-          "Coaching Center",
-          "Tutor",
-          "Consultants",
-          "Social Media",
-          "Photos",
-          "Accolades",
-          "Management",
-          "Contact",
+         
         ].map((tab) => (
           <span key={tab} className={tab === "About" ? "tab active" : "tab"}>
             {tab}

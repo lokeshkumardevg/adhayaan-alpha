@@ -87,7 +87,7 @@ function App() {
     // alert("Right click is disabled");
   };
 
-  
+
   return (
     <>
       <Toaster
@@ -160,17 +160,17 @@ function App() {
         <Route path="/forget-passwrd" element={<Password />} />
         <Route path="/dash" element={<Dashboardheader />} />
         {/* regoster institute */}
-        <Route path="registerInstitute" element={<InstitutionLandingPage/>}></Route>
-         <Route path="institutedetails" element={<InstitutionAccountForm/>}></Route>
-  
-        <Route path="/login-institute" element={<InstitutionSignInPage/>}></Route>
-        <Route path="/tutorProfileView" element={<TutorProfileView/>}></Route>
+        <Route path="registerInstitute" element={<InstitutionLandingPage />}></Route>
+        <Route path="institutedetails" element={<InstitutionAccountForm />}></Route>
+
+        <Route path="/login-institute" element={<InstitutionSignInPage />}></Route>
+        <Route path="/tutorProfileView" element={<TutorProfileView />}></Route>
         {/* 🔒 Protected Institute Routes */}
-<Route element={<PrivateRouteInstitute />}>
-  <Route path="/dashboardnew" element={<DashboardNew />} />
-  <Route path="/profile-view" element={<ProfileView />} />
-</Route>
-        
+        <Route element={<PrivateRouteInstitute />}>
+          <Route path="/dashboardnew" element={<DashboardNew />} />
+          <Route path="/profile-view" element={<ProfileView />} />
+        </Route>
+
       </Routes>
     </>
   );

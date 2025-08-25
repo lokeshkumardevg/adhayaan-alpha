@@ -8,7 +8,8 @@ const API_BASE = "http://localhost/admin/index.php/Api";
 const GET_CONSULTANT_URL = `${API_BASE}/getConsultantData`;
 const SAVE_CONSULTANT_URL = `${API_BASE}/saveConsultantData`;
 
-const ConsultantSection = ({ userId = 1 }) => {
+const ConsultantSection = () => {
+  const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
   const allServices = [
     "Course selection", "Application assistance", "Admission assistance", "Visa services",
     "Finance & Scholarship", "Pre-departure event & kit", "Course recommendation", "Scholarship assistance",
@@ -95,8 +96,7 @@ const ConsultantSection = ({ userId = 1 }) => {
       {/* 🟥 Navbar */}
       <div className="navbar">
         {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses", "Coaching Center",
-          "Tutor", "Consultants", "Social Media", "Photos", "Accolades", "Management", "Contact"
+          "Consultants"
         ].map((tab) => (
           <span key={tab} className={tab === "Consultants" ? "tab active" : "tab"}>
             {tab}

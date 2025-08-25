@@ -11,7 +11,7 @@ const SAVE_COLLEGE_URL = `${API_BASE}/save_college_data`;
 const GET_COLLEGE_LIST_URL = `${API_BASE}/get_all_colleges`;
 
 const CollegeSection = ({ formData, setFormData }) => {
-  const userId = 1; // You can replace with dynamic localStorage user id
+   const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
   const [collegeList, setCollegeList] = useState([]);
 
   // API functions
@@ -81,9 +81,7 @@ const CollegeSection = ({ formData, setFormData }) => {
     <div className="college-section">
       <div className="navbar">
         {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses",
-          "Coaching Center", "Tutor", "Consultants", "Social Media",
-          "Photos", "Accolades", "Management", "Contact"
+           "Collage"
         ].map((tab) => (
           <span key={tab} className={tab === "Collage" ? "tab active" : "tab"}>
             {tab}

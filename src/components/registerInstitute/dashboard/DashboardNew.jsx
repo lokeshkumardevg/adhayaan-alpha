@@ -13,6 +13,7 @@ import ProfileView from "../profile-section/profile-view-section/ProfileView";
 import ProfileHeaderCard from "../profile-section/dashboard-header/ProfileHeaderCard";
 import CollegeSection from "../profile-section/college-section/CollegeSection";
 import ITISection from "../profile-section/iti-section/ITISection";
+import CoachingCenterSection from "../profile-section/coaching-section/CoachingCenterSection";
 import { useNavigate } from "react-router-dom";
 import "./Dashboard.css";
 
@@ -24,7 +25,7 @@ const DashboardNew = () => {
     email: "admin@gmail.com",
     username: "jnicsrofficial",
   });
-
+  console.log("User Data faker seeder:", user);
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef();
   const navigate = useNavigate();
@@ -129,6 +130,9 @@ const DashboardNew = () => {
           {user?.user_id?.institution_type === "ITI / Vocational" && (
           <ITISection formData={formData} setFormData={setFormData} />
         )}
+       
+          <CoachingCenterSection formData={formData} setFormData={setFormData} />
+      <CourseSection formData={formData} setFormData={setFormData} />
         <SocialMediaSection formData={formData} setFormData={setFormData} />
         <PhotosSection formData={formData} setFormData={setFormData} />
         <AccoladeSection formData={formData} setFormData={setFormData} />

@@ -22,12 +22,9 @@ const managementFields = [
   "Training & Placement Officer (TPO)"
 ];
 
-const ManagementSection = ({ userId }) => {
-  const tabs = [
-    "About", "University", "Collage", "ITI/Vocational", "Courses",
-    "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos",
-    "Accolades", "Management", "Contact"
-  ];
+const ManagementSection = () => {
+   const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
+  const tabs = [ "Management"]
 
   // State for management data
   const [managementData, setManagementData] = useState(

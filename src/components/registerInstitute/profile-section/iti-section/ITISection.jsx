@@ -4,7 +4,7 @@ import "./ITISection.css";
 
 const ITISection = ({ formData, setFormData }) => {
   const [message, setMessage] = useState("");
-  const userId = localStorage.getItem("userId");
+ const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
   const apiBase = "http://localhost/admin/index.php/Api";
 
   const handleChange = (e) => {
@@ -62,9 +62,7 @@ const ITISection = ({ formData, setFormData }) => {
     <div className="iti-section">
        <div className="navbar">
         {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses",
-          "Coaching Center", "Tutor", "Consultants", "Social Media",
-          "Photos", "Accolades", "Management", "Contact"
+          "ITI/Vocational"
         ].map((tab) => (
           <span key={tab} className={tab === "ITI/Vocational" ? "tab active" : "tab"}>
             {tab}

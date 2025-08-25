@@ -9,7 +9,8 @@ const API_BASE = "http://localhost/admin/index.php/Api";
 const GET_COURSES_URL = `${API_BASE}/get_courses`;
 const SAVE_COURSES_URL = `${API_BASE}/save_courses`;
 
-const CourseSection = ({ userId = 1 }) => {
+const CourseSection = () => {
+  const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
   const [formData, setFormData] = useState({
     streams: [],
     total_courses: "",
@@ -110,9 +111,8 @@ const CourseSection = ({ userId = 1 }) => {
       {/* Navbar */}
       <div className="navbar">
         {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses",
-          "Coaching Center", "Tutor", "Consultants", "Social Media",
-          "Photos", "Accolades", "Management", "Contact"
+           "Courses",
+          
         ].map((tab) => (
           <span key={tab} className={tab === "Courses" ? "tab active" : "tab"}>
             {tab}

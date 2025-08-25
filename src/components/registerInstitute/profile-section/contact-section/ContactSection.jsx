@@ -12,9 +12,9 @@ const GET_CONTACT_URL = `${API_BASE}/get_contact_section`;
 const SAVE_CONTACT_URL = `${API_BASE}/save_contact_section`;
 
 const ContactSection = () => {
-  const userdat = JSON.parse(localStorage.getItem("AdhyayanAuth"));
+  const userdat = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
   const [contact, setContact] = useState({
-    user_id: userdat.user_id.id,
+    user_id: userdat,
     address: "",
     country: "",
     city: "",
@@ -81,9 +81,7 @@ const ContactSection = () => {
     <div className="section-wrapper contact-form-wrapper">
       <div className="navbar">
         {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses",
-          "Coaching Center", "Tutor", "Consultants", "Social Media",
-          "Photos", "Accolades", "Management", "Contact"
+           "Contact"
         ].map((tab) => (
           <span key={tab} className={tab === "Contact" ? "tab active" : "tab"}>
             {tab}
@@ -115,11 +113,11 @@ const ContactSection = () => {
         <button className="cancel-btn" onClick={fetchContact}>Cancel</button>
       </div>
 
-      <div className="image-preview">
+      {/* <div className="image-preview">
         <img src="/contact1.png" alt="Preview 1" />
         <img src="/contact2.png" alt="Preview 2" />
         <img src="/contact3.png" alt="Preview 3" />
-      </div>
+      </div> */}
     </div>
   );
 };

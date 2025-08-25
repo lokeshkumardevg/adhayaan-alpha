@@ -10,7 +10,8 @@ const API_BASE = "http://localhost/admin/index.php/Api";
 const GET_SOCIAL_MEDIA_URL = `${API_BASE}/get_social_media`;
 const SAVE_SOCIAL_MEDIA_URL = `${API_BASE}/save_social_media`;
 
-const SocialMediaSection = ({ userId }) => {
+const SocialMediaSection = ( ) => {
+  const userId = localStorage.getItem("userId");
   const [formData, setFormData] = useState({
     facebook: "",
     instagram: "",
@@ -22,7 +23,7 @@ const SocialMediaSection = ({ userId }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await axios.get(`${GET_SOCIAL_MEDIA_URL}?user_id=${userId || 1}`);
+        const res = await axios.get(`${GET_SOCIAL_MEDIA_URL}?user_id=${userId || 12}`);
         if (res.data.status === "200") {
           setFormData(res.data.data);
         }
@@ -45,7 +46,7 @@ const SocialMediaSection = ({ userId }) => {
     try {
       const res = await axios.post(SAVE_SOCIAL_MEDIA_URL, {
         ...formData,
-        user_id: userId || 1
+        user_id: userId || 12
       });
 
       if (res.data.status === "200") {
@@ -77,19 +78,9 @@ const SocialMediaSection = ({ userId }) => {
     <div className="social-media-container">
       <div className="navbar">
         {[
-          "About",
-          "University",
-          "Collage",
-          "ITI/Vocational",
-          "Courses",
-          "Coaching Center",
-          "Tutor",
-          "Consultants",
+         
           "Social Media",
-          "Photos",
-          "Accolades",
-          "Management",
-          "Contact"
+         
         ].map((tab) => (
           <span key={tab} className={tab === "Social Media" ? "tab active" : "tab"}>
             {tab}

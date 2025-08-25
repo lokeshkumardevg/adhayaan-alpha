@@ -9,7 +9,8 @@ const MySwal = withReactContent(Swal);
 const API_BASE = "http://localhost/admin/index.php/Api";
 const UPLOAD_PHOTOS_URL = `${API_BASE}/upload_photos`;
 
-const PhotosSection = ({ userId }) => {
+const PhotosSection = () => {
+    const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
   const [files, setFiles] = useState([]);
   const [uploadedPaths, setUploadedPaths] = useState([]);
 
@@ -70,9 +71,8 @@ const PhotosSection = ({ userId }) => {
     <div className="photos-container">
       <div className="navbar">
         {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses",
-          "Coaching Center", "Tutor", "Consultants", "Social Media",
-          "Photos", "Accolades", "Management", "Contact"
+      
+          "Photos"
         ].map((tab) => (
           <span key={tab} className={tab === "Photos" ? "tab active" : "tab"}>
             {tab}

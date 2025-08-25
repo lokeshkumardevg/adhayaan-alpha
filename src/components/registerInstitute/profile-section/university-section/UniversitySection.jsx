@@ -54,17 +54,7 @@ const UniversitySection = ({ formData, setFormData }) => {
         {[
           "About",
           "University",
-          "Collage",
-          "ITI/Vocational",
-          "Courses",
-          "Coaching Center",
-          "Tutor",
-          "Consultants",
-          "Social Media",
-          "Photos",
-          "Accolades",
-          "Management",
-          "Contact",
+          
         ].map((tab) => (
           <span
             key={tab}

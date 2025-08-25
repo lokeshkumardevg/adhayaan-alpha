@@ -1,8 +1,7 @@
 .coaching-center-section {
+   padding: 20px;
+  background-color: #fff;
   border: 1px solid #ccc;
-  padding: 20px;
-  font-family: 'Segoe UI', sans-serif;
-  background: #fff;
 }
 
 h3 {

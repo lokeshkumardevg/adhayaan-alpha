@@ -17,7 +17,8 @@ const defaultAccolades = [
   "DEB", "NCVT", "ICWA", "12(b)", "2(f)", "2(f) and 12(b)"
 ];
 
-const AccoladesSection = ({ userId }) => {
+const AccoladesSection = () => {
+  const userId = localStorage.getItem("userId");
   const [accolades, setAccolades] = useState([]);
   const [others, setOthers] = useState("");
 
@@ -90,10 +91,7 @@ const AccoladesSection = ({ userId }) => {
   return (
     <div className="accolades-container">
       <div className="navbar">
-        {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses",
-          "Coaching Center", "Tutor", "Consultants", "Social Media",
-          "Photos", "Accolades", "Management", "Contact"
+        {[ "Accolades"
         ].map((tab) => (
           <span key={tab} className={tab === "Accolades" ? "tab active" : "tab"}>
             {tab}

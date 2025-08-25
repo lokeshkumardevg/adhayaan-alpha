@@ -12,7 +12,8 @@ const GET_TUTOR_URL = `${API_BASE}/get_tutor_data`;
 const SAVE_TUTOR_URL = `${API_BASE}/save_tutor_data`;
 
 const TutorSection = ({ formData, setFormData }) => {
-  const userId = localStorage.getItem("userId");
+     const userId = JSON.parse(localStorage.getItem("AdhyayanAuth"))?.user_id?.id || 1;
+
 
   const studyModes = ["Student House", "Tutor House", "Online"];
 
@@ -43,7 +44,7 @@ const TutorSection = ({ formData, setFormData }) => {
 
   const handleSave = async () => {
     try {
-      const payload = { user_id: 1, ...formData };
+      const payload = { user_id: userId, ...formData };
       const res = await axios.post(SAVE_TUTOR_URL, payload);
 
       if (res.data.status === "200") {
@@ -75,7 +76,7 @@ const TutorSection = ({ formData, setFormData }) => {
     const fetchData = async () => {
       try {
         const res = await axios.get(GET_TUTOR_URL, {
-          params: { user_id: 1 },
+          params: { user_id: userId},
         });
         if (res.data.status === "200") {
           setFormData(res.data.data || {});
@@ -92,9 +93,7 @@ const TutorSection = ({ formData, setFormData }) => {
     <div className="tutor-section">
       <div className="navbar">
         {[
-          "About", "University", "Collage", "ITI/Vocational", "Courses",
-          "Coaching Center", "Tutor", "Consultants", "Social Media", "Photos",
-          "Accolades", "Management", "Contact"
+          "Tutor"
         ].map((tab) => (
           <span key={tab} className={tab === "Tutor" ? "tab active" : "tab"}>
             {tab}
